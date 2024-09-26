@@ -1,0 +1,38 @@
+.catalog {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 320px));
+    grid-auto-rows: 1fr;
+    column-gap: 30px;
+    row-gap: 45px;
+    width: fit-content;
+    margin: 0 auto;
+
+    @include r(992) {
+      grid-template-columns: repeat(2, minmax(auto, 320px));
+    }
+
+    @include r(768) {
+      display: flex;
+      justify-content: initial;
+      gap: initial;
+    }
+  }
+}
+
+.catalog__swiper {
+  padding: 30px 0;
+
+  @include r(768) {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  @include r(576) {
+    max-width: 400px;
+  }
+}
+
+.catalog__dots {
+  text-align: center;
+}

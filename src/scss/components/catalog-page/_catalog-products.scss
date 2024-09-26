@@ -1,0 +1,66 @@
+.catalog-page {
+  &__head {
+    display: flex;
+    column-gap: 40px;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 120px;
+    padding-top: 240px;
+
+    @include r(768) {
+      flex-direction: column;
+      align-items: center;
+      padding-top: 100px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    @extend %montserrat-700;
+
+    @include r(992) {
+      font-size: 38px;
+      text-align: center;
+    }
+  }
+
+  &__text {
+    @extend %montserratAlternates-300;
+    font-size: 32px;
+
+    @include r(992) {
+      font-size: 20px;
+    }
+
+    @include r(768) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__catalog {
+    padding: 2px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    column-gap: 10px;
+    row-gap: 100px;
+    height: fit-content;
+    margin-bottom: 120px;
+    width: 100%;
+
+    @include r(992) {
+      grid-template-columns: repeat(3, 1fr);
+      width: fit-content;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+    @include r(768) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include r(576) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

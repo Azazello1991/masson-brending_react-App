@@ -1,0 +1,73 @@
+.sale {
+
+  &__title {
+    font-size: 48px;
+    @extend %montserrat-600;
+
+    @include r(992) {
+      font-size: 38px;
+    }
+  }
+
+  &__text {
+    @extend %montserrat-300;
+    color: $silverLight;
+    margin-bottom: -50px;
+
+    @include r(992) {
+      font-size: 20px;
+    }
+
+    @include r(576) {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__slider-wrapper {
+    position: relative;
+  }
+
+  &__slider {
+    height: 600px;
+
+    @include r(992) {
+      height: 500px;
+    }
+    @include r(576) {
+      height: 600px;
+    }
+  }
+
+  &__swiper-arrows {
+  }
+
+  &__arrow--prev {
+    &::after {
+      background-image: url("../../images/sprite.svg#icon-arrow-right");
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      transform: translateX(-5px);
+    }
+  }
+
+  &__arrow--next {
+    &::after {
+      background-image: url("../../images/sprite.svg#icon-arrow-right");
+    }
+
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+
+  &__arrow--prev,
+  &__arrow--next {
+    &:hover::after {
+      filter: invert(100%) sepia(4%) saturate(29%) hue-rotate(332deg)
+        brightness(105%) contrast(100%);
+    }
+  }
+}
+

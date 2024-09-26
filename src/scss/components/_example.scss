@@ -1,0 +1,20 @@
+.example {
+  &__title {
+    font-size: 48px;
+    @extend %montserrat-600;
+
+    @include r(992) {
+      font-size: 38px;
+    }
+  }
+
+  &__text {
+    @extend %montserrat-300;
+    color: $silverLight;
+    margin-bottom: 18px;
+
+    @include r(992) {
+      font-size: 20px;
+    }
+  }
+}

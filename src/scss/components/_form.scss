@@ -1,0 +1,98 @@
+.section-form {
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 110px;
+
+    @include r(992) {
+      flex-direction: column-reverse;
+      align-items: center;
+      row-gap: 20px;
+    }
+  }
+
+  &__data {
+    width: 100%;
+
+    @include r(992) {
+      max-width: 500px;
+    }
+  }
+
+  &__map {
+    padding: 0 10px;
+    width: 100%;
+
+    & iframe {
+      width: 100%;
+    }
+
+    @include r(992) {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.form {
+  margin-bottom: 35px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    width: 100%;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  &__fild {
+    transform: skew(-10deg);
+    background-color: #111111;
+    padding: 30px 40px;
+    max-width: 454px;
+    font-size: 16px;
+    line-height: 1.5;
+
+    &::placeholder {
+      @extend %montserrat-400;
+      transform: skew(10deg);
+    }
+  }
+
+  &__error {
+    font-size: 16px;
+    color: $accent;
+  }
+
+  &__textarea {
+    max-width: 454px;
+    width: 100%;
+    resize: vertical;
+    margin-bottom: 50px;
+    min-height: 200px;
+  }
+
+  &__btn {
+    padding: 20px 33px;
+    font-size: 20px;
+    @extend %montserrat-800;
+    line-height: 1;
+    text-transform: uppercase;
+    color: $bgColor;
+    background-color: $accent;
+  }
+}
+
+.networks {
+
+  &__network--viber {
+    &::after {
+      background-image: url("../../images/sprite.svg#icon-viber");
+    }
+  }
+}

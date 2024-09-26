@@ -1,0 +1,238 @@
+.example-slider {
+  padding: 50px 0;
+
+  .swiper-pagination {
+  }
+
+  .example {
+    &__slider-wrapper {
+      position: relative;
+      margin-bottom: 185px;
+
+      @include r(992) {
+        margin-bottom: 50px;
+      }
+    }
+
+    &__slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 350px;
+      background: url("../../images/bg-example.png") center / cover no-repeat;
+    }
+
+    &__slide-wrapper {
+      background-color: transparent;
+    }
+
+    &__slide-wrapper img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      object-position: 0;
+
+      @include r(992) {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border: 1px solid $accent;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $accent;
+}
+
+// ============================== Sale swiper ============================= //
+.sale-slider {
+  background: url("../../images/bg-sale.png") center / contain no-repeat;
+
+  .sale-slide {
+    display: flex;
+    align-items: center;
+    height: 700px;
+    width: 100%;
+    padding: 0 10px;
+
+    @include r(576) {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__content {
+      max-width: 590px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @include r(992) {
+        max-width: 50%;
+      }
+
+      @include r(576) {
+        max-width: 100%;
+        display: flex;
+      }
+    }
+
+    &__content h3 {
+      text-wrap: nowrap;
+      color: #252525;
+      font-size: 52px;
+      @extend %montserrat-700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+
+      @include r(992) {
+        font-size: 28px;
+      }
+
+      @include r(768) {
+        color: $fontColor;
+      }
+
+      @include r(576) {
+        font-size: 24px;
+        text-align: center;
+      }
+    }
+
+    &__content p {
+      font-size: 24px;
+      @extend %montserrat-400;
+      color: #262626;
+      margin-bottom: 35px;
+
+      @include r(992) {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      @include r(992) {
+        font-size: 16px;
+      }
+
+      @include r(576) {
+        color: $fontColor;
+        text-align: center;
+      }
+    }
+
+    &__btn {
+      padding: 20px 30px;
+      width: fit-content;
+      margin-left: 10px;
+      font-size: 20px;
+      @extend %montserrat-800;
+      line-height: 1;
+      text-transform: uppercase;
+      color: $fontColor;
+      background-color: #0f0f0f;
+      box-shadow: #0f0f0f 0px 0px 10px 0px;
+      transition: all 0.3s ease-in-out;
+
+      @include r(992) {
+        padding: 15px 20px;
+        font-size: 16px;
+      }
+
+      @include r(576) {
+        background-color: $accent;
+      }
+
+      &:hover {
+        color: $bgColor;
+      }
+
+      &:active {
+        box-shadow: inset 0px 0px 20px 0px $fontColor;
+      }
+    }
+
+    &__photo-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: url("../../images/sale-art.png") center / 800px no-repeat;
+
+      @include r(1050) {
+        background: url("../../images/sale-art.png") center / 700px no-repeat;
+      }
+
+      @include r(768) {
+        background: url("../../images/sale-art.png") center / 600px no-repeat;
+      }
+
+      @include r(576) {
+        background: url("../../images/sale-art.png") center / 600px no-repeat;
+      }
+    }
+
+    &__photo {
+      margin-top: -40px;
+      max-width: 400px;
+      max-height: 500px;
+      background-color: transparent;
+
+      @include r(576) {
+        max-width: 300px;
+        max-height: 300px;
+      }
+    }
+
+    &__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.sale-slider,
+.example-slider {
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    background-image: url("../../images/sprite.svg#icon-arrow-right");
+    background-position: center;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+  }
+
+  .swiper-button-prev::after {
+    transform: rotate(180deg);
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:active {
+    background-color: #353333;
+  }
+}
+
+.swiper-button-next {
+  &:hover {
+    transform: translateX(5px);
+  }
+}
+
+.swiper-button-prev {
+  &:hover {
+    transform: translateX(-5px);
+  }
+}

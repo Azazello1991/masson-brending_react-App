@@ -1,0 +1,29 @@
+@import "./reset.scss";
+@import "./fonts.scss";
+@import "./vars.scss";
+@import "./global.scss";
+@import "./mixins.scss";
+@import "./components/swiper.scss";
+
+@import './components/header.scss';
+/* @import "./components/mobile-menu.scss";
+@import "./components/burget-menu.scss"; */
+@import "./components/hero.scss";
+@import "./components/about.scss";
+@import "./components/searchHead.scss";
+@import "./components/example.scss";
+@import "./components/footer.scss";
+@import "./components/sale.scss";
+@import "./components/top.scss";
+@import "./components/shuffle-top.scss";
+@import "./components/catalog.scss";
+@import "./components/contacts.scss";
+@import "./components/form.scss";
+@import "./components/comments.scss";
+@import "./components/video.scss";
+
+/* galerry-page */
+@import "./components/catalog-page/catalog-products";
+@import "./components/catalog-page/pagination";
+@import "./components/catalog-page/filter";
+@import "./components/catalog-page/card";

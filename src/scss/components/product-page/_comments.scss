@@ -1,0 +1,171 @@
+.comments {
+
+		&__item {
+         display: flex;
+         column-gap: 30px;
+         margin-bottom: 115px;
+
+         @include r(992) {
+            margin-bottom: 80px;
+         }
+         @include r(768) {
+            margin-bottom: 50px;
+         }
+		}
+
+      &__inner {
+         padding: 15px 0;
+      }
+
+		&__photo {
+         min-width: 80px;
+         height: 80px;
+         border-radius: 50%;
+		}
+
+		&__img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+		}
+
+      &__autor {
+         @extend %montserrat-600;
+         font-size: 24px;
+         margin-bottom: 7px;
+
+         @include r(768) {
+            font-size: 20px;
+         }
+      }
+
+      &__stars-2 {
+         margin-bottom: 32px;
+      }
+
+      &__comment {
+         color: #A5A5A5;
+         font-size: 20px;
+         line-height: 1.3;
+         @extend %montserrat-400;
+
+         @include r(768) {
+            margin-left: -90px;
+            font-size: 16px;
+         }
+      }
+}
+
+.product {
+
+   &__form-subtitle {
+      font-size: 24px;
+      color: #ffffff;
+      max-width: 80%;
+      text-align: center;
+      margin: 0 auto 30px;
+   }
+
+   &__form {
+      border: 1px solid $accent;
+      transform: skew(-3deg);
+      padding: 30px 50px 50px;
+      width: fit-content;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      transition: all 0.3s ease-in-out;
+   }
+
+   &__form.hidden {
+      position: absolute;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      z-index: -10;
+      transform: translateX(-200%);
+   }
+
+   &__form-wrapper {
+      transform: skew(3deg);
+   }
+
+   &__inner {
+      margin-bottom: 20px;
+   }
+
+   &__stars-wrapper {
+      margin-bottom: 15px;
+   }
+
+   &__form-stars {
+      margin-bottom: 10px;
+   }
+
+   &__rating-title {
+      font-size: 14px;
+      color: $accent;
+      margin-bottom: 10px;
+   }
+
+   &__fild {
+      max-width: 400px;
+      font-size: 18px;
+      padding: 20px 40px;
+      background-color: black;
+      width: 100%;
+   }
+
+   &__textarea {
+      resize: vertical;
+      min-height: 150px;
+   }
+
+   &__btns {
+      display: flex;
+      justify-content: space-between;
+   }
+
+   &__btn-cansel {
+
+   }
+
+   &__btn-form {
+      font-size: 18px;
+   }
+}
+
+.comments {
+
+   &__stars-2 {}
+}
+
+.stars {
+   .Starry .Starry-star {
+      min-width: 25px;
+      width: 25px;
+      height: 25px;
+   }
+}
+
+.stars.comments__stars-2 {
+   .Starry .Starry-star {
+      min-width: 30px;
+      width: 30px;
+      height: 30px;
+
+      @include r(768) {
+         min-width: 20px;
+         width: 20px;
+         height: 20px;
+      }
+   }
+
+   .Starry-active.Starry-static,
+   .Starry-blank {
+      column-gap: 10px;
+
+      @include r(768) {
+         column-gap: 5px;
+      }
+   }
+}
