@@ -4,10 +4,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchProductsRes = createAsyncThunk(
   "products/fetchProductsStatus",
   async (params) => {
-    const { gender, order, limit, page, sort } = params;
+    const { gender, order, limit, page, sort, search } = params;
 
     const { data } = await axios.get(
-      `https://66ef203c3ed5bb4d0bf2dded.mockapi.io/croducts?gender=${gender}&order=${order}&sortBy=${sort}&limit=${limit}&page=${page}`
+      `https://66ef203c3ed5bb4d0bf2dded.mockapi.io/croducts?${search}&limit=${limit}&page=${page}&order=${order}${sort}${gender}`
     );
 
     return data; // поверта масив продуктів
@@ -40,7 +40,6 @@ export const asyncProductsSlice = createSlice({
         // Успешно
         state.products = action.payload;
         state.isLoading = "success";
-        console.log(state.products);
       })
       .addCase(fetchProductsRes.rejected, (state) => {
         // Ошибка

@@ -4,6 +4,10 @@ import { sortByQuantity, sortByData } from "../../redux/slices/filterSlice";
 
 const sortBy = [
   {
+    name: "Усі товари",
+    "": "",
+  },
+  {
     name: "Дешевше - Дорожче",
     price: "-price",
   },

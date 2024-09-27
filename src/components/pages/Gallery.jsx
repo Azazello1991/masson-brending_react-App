@@ -24,12 +24,16 @@ const Gallery = () => {
   // - передаємо через параметри в функцію fetchProductsRes
 
   const fetchProducts = async () => {
-    const gender = sortBy.gender ? sortBy.gender : '';
+    const gender = sortBy.gender? `&gender=${sortBy.gender}`: '';
     const limit = quantity.quantity;
     const page = currentPage;
-    const order = sortBy.price === '-price' ? 'asc' : 'desc';
-    const sort = sortBy.price ? 'price' : sortBy.rating? 'rating': ''
-    console.log(sort, order)
+    const order = sortBy.price === "-price" ? "asc" : "desc";
+    const sort = sortBy.price
+      ? "&sortBy=price"
+      : sortBy.rating
+      ? "&sortBy=rating"
+      : "";
+    const search = searchValue ? `&search=${searchValue}` : "";
 
     dispatch(
       fetchProductsRes({
@@ -38,19 +42,18 @@ const Gallery = () => {
         order,
         page,
         sort,
-        /* category,
         search,
-        currentPage, */
       })
     );
   };
-  
-    // ================== useEffect который делает axios запрос при изменении даных:
+
+  // ================== useEffect который делает axios запрос при изменении даных:
   React.useEffect(() => {
     fetchProducts();
+    console.log(searchValue);
 
     window.scrollTo(0, 0); // будет скролить сразу вверх
-  }, [sortBy, quantity, currentPage, categoryId, searchValue ]);
+  }, [sortBy, quantity, currentPage, categoryId, searchValue, dispatch]);
 
   // Витягуем з слайсу стан асинхронної функції:
   const { products, isLoading } = useSelector(
@@ -77,15 +80,6 @@ const Gallery = () => {
     window.scrollTo(0, 0);
   }, [dispatch]);
 
-  // Якщо помилка, то рендерим помилку
-  if (isLoading === "error") {
-    return (
-      <div>
-        <NotFoundBlock />
-      </div>
-    );
-  }
-
   return (
     <>
       <Header />
@@ -102,10 +96,13 @@ const Gallery = () => {
 
               <FilterGallery />
             </div>
-
-            <ul class="catalog-page__catalog catalog-list">
-              {isLoading === "loading" ? skeletons : arrProducts}
-            </ul>
+            {isLoading === "error" ? (
+              <NotFoundBlock />
+            ) : (
+              <ul class="catalog-page__catalog catalog-list">
+                {isLoading === "loading" ? skeletons : arrProducts}
+              </ul>
+            )}
 
             <PaginationGallery />
           </div>

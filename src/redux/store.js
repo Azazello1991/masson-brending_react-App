@@ -21,6 +21,6 @@ export const store = configureStore({
     formCollSlice,
     gallerySlice,
     asyncProductsSlice,
-    filterSlice
+    filterSlice,
   },
 })
