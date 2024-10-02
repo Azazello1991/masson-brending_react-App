@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+// redux
+import { useSelector, useDispatch } from "react-redux";
 
 const Cabinet = () => {
+  const { purchases } = useSelector((state) => state.cartSlice);
+  useEffect(() => {
+    console.log(purchases);
+  }, purchases);
+
   return (
     <div class="header__nav-top">
       <div class="header__languages">
@@ -13,16 +20,15 @@ const Cabinet = () => {
         </button>
       </div>
       <div class="header__cabinet">
-        <a
+        <Link to={'/cart'}
           class="btn-icon header__cabinet-btn header__cart-btn"
-          href="./cart-page.html"
           title="Кошик"
           aria-label="Кошик"
         >
           <span class="header__quantity" aria-label="Килькисть товару в кошику">
-            0
+            {purchases.length}
           </span>
-        </a>
+        </Link>
         <a
           href="#"
           class="btn-icon header__cabinet-btn header__lickes-btn"
@@ -30,7 +36,8 @@ const Cabinet = () => {
           title="Обране"
           aria-label="Обране"
         ></a>
-        <Link to='/LogIn'
+        <Link
+          to="/LogIn"
           class="header__log-in"
           type="button"
           title="Реєстрація"

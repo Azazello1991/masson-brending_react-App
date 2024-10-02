@@ -1,17 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 // components
 import FilterGallery from "../galleryComponents/FilterGallery";
 import Card from "../galleryComponents/Card";
 import Header from "../Header";
 import Footer from "../Footer";
 import SkiletonProdukt from "../galleryComponents/SkiletonProdukt";
-import PaginationGallery from "../galleryComponents/PaginationGallery";
 import NotFoundBlock from "../pages/NotFoundBlock/NotFoundBlock";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsRes } from "../../redux/slices/asyncProductsSlice";
+import PaginationReactGallery from "../galleryComponents/PaginationReactGallery";
 
 const Gallery = () => {
   const dispatch = useDispatch();
@@ -34,6 +33,7 @@ const Gallery = () => {
       ? "&sortBy=rating"
       : "";
     const search = searchValue ? `&search=${searchValue}` : "";
+    const idProduct = '';
 
     dispatch(
       fetchProductsRes({
@@ -43,6 +43,7 @@ const Gallery = () => {
         page,
         sort,
         search,
+        idProduct,
       })
     );
   };
@@ -50,7 +51,6 @@ const Gallery = () => {
   // ================== useEffect который делает axios запрос при изменении даных:
   React.useEffect(() => {
     fetchProducts();
-    console.log(searchValue);
 
     window.scrollTo(0, 0); // будет скролить сразу вверх
   }, [sortBy, quantity, currentPage, categoryId, searchValue, dispatch]);
@@ -69,9 +69,9 @@ const Gallery = () => {
   const arrProducts =
     products &&
     products.map((card, i) => (
-      <Link to={`product/${card.id}`} key={card.id}>
+      <li key={card.id}>
         <Card {...card} />
-      </Link>
+      </li>
     ));
 
   // Запуск асинхронної функції при першому рендері
@@ -104,7 +104,8 @@ const Gallery = () => {
               </ul>
             )}
 
-            <PaginationGallery />
+            {/* <PaginationGallery /> */}
+            <PaginationReactGallery/>
           </div>
         </section>
       </main>

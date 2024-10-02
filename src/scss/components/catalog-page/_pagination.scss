@@ -1,14 +1,14 @@
 .pagination {
-  width: fit-content;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
 
-  &__list {
-    display: flex;
-    align-items: center;
-    column-gap: 20px;
+  .previous a,
+  .next a {
+    background-color: transparent;
   }
-
-  &__link {
+  
+  a {
     position: relative;
     display: flex;
     justify-content: center;
@@ -40,7 +40,7 @@
     }
   }
 
-  &__link--current {
+  .selected a {
     width: 60px;
     height: 60px;
     background-color: $accent;
@@ -48,63 +48,13 @@
     @extend %montserrat-700;
     color: #252525;
   }
-
-  &__dots {
-    letter-spacing: 0.54px;
+  .previous.disabled a,
+  .next.disabled {
+    background-color: #5e5a5a;
+    pointer-events: none;
+    cursor: not-allowed;
   }
 
-  &__link--prev {
-    background-color: transparent;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%) rotate(180deg);
-      left: 50%;
-      width: 15px;
-      height: 30px;
-      /* background-image: url("../../images/sprite.svg#icon-arrow-right"); */
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    &:hover::after {
-      filter: invert(87%) sepia(88%) saturate(0%) hue-rotate(304deg)
-        brightness(107%) contrast(102%);
-    }
-  }
-
-  &__link--next {
-    background-color: transparent;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      left: 50%;
-      width: 15px;
-      height: 30px;
-      /* background-image: url("../../images/sprite.svg#icon-arrow-right"); */
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    &:hover::after {
-      filter: invert(87%) sepia(88%) saturate(0%) hue-rotate(304deg)
-        brightness(107%) contrast(102%);
-    }
-  }
-
-  &__link--dasabled {
-    &::after {
-      // filter: invert(84%) sepia(1%) saturate(0%) hue-rotate(19deg) brightness(89%) contrast(103%);
-    }
-
-    &:hover::after {
-      filter: invert(93%) sepia(0%) saturate(2688%) hue-rotate(339deg)
-        brightness(86%) contrast(86%);
-    }
+  :global {
   }
 }

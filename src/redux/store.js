@@ -9,6 +9,7 @@ import formCollSlice from './slices/formCollSlice';
 import gallerySlice from './slices/gallerySlice';
 import asyncProductsSlice from './slices/asyncProductsSlice';
 import filterSlice from './slices/filterSlice';
+import cartSlice from './slices/CartSlice';
 
 export const store = configureStore({
   reducer: {
@@ -22,5 +23,6 @@ export const store = configureStore({
     gallerySlice,
     asyncProductsSlice,
     filterSlice,
+    cartSlice,
   },
 })

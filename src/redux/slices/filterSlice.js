@@ -3,20 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   params: {
     searchValue: "",
-
     sortBy: {
       name: "Усі товари",
       sotrProperty: "-price",
     },
-
     quantity: {
       name: "По 16",
       quantity: 16,
     },
-
     currentPage: 1,
-
     categoryId: "",
+    productSize: "",
+    productColor: "",
+    productQuantity: 1,
   },
 };
 
@@ -25,7 +24,6 @@ export const filterSlice = createSlice({
   initialState: initialState,
   reducers: {
     sortByData(state, action) {
-      console.log(action.payload)
       state.params.sortBy = action.payload.obj;
     },
 
@@ -36,11 +34,45 @@ export const filterSlice = createSlice({
     updateSearchValue(state, action) {
       state.params.searchValue = action.payload;
     },
+
+    setPagination(state, action) {
+      state.params.currentPage = action.payload.selected + 1;
+    },
+
+    setProductSize(state, action) {
+      state.params.productSize = action.payload;
+    },
+
+    setProductColor(state, action) {
+      state.params.productColor = action.payload;
+    },
+
+    setProductQuantityMore(state) {
+      state.params.productQuantity++;
+    },
+
+    setProductQuantityLess(state) {
+      state.params.productQuantity--;
+    },
+
+    setChangeProductQuantity(state, action) {
+      state.params.productQuantity = action.payload;
+    },
   },
 });
 
-export const selectFilter = (state) => state.content; // useSelector
+export const selectFilter = (state) => state.params; // useSelector
 
-export const { sortByData, sortByQuantity, updateSearchValue } = filterSlice.actions; // functions
+export const {
+  sortByData,
+  sortByQuantity,
+  updateSearchValue,
+  setPagination,
+  setProductSize,
+  setProductColor,
+  setProductQuantityMore,
+  setProductQuantityLess,
+  setChangeProductQuantity,
+} = filterSlice.actions;
 
 export default filterSlice.reducer;

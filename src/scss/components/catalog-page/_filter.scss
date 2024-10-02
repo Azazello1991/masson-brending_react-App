@@ -1,10 +1,11 @@
 .filter {
   display: flex;
   align-items: center;
-  column-gap: 30px;
+  justify-content: space-between;
+  /* column-gap: 15px; */
   max-width: 490px;
   min-width: 325px;
-  padding: 0 20px;
+  margin-bottom: 50px;
 
   &__inner {
     display: flex;
@@ -115,6 +116,8 @@
   &__order-item {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 50px;
   }
 
   &__inner-order {
@@ -144,7 +147,7 @@
   }
 
   &__input {
-    max-width: 50px;
+    width: 50px;
     font-size: 16px;
     color: $bgColor;
     background-color: $accent;
@@ -153,6 +156,7 @@
     text-align: center;
     padding: 5px;
     transition: all 0.3s ease-in;
+    margin: 0;
 
     &:hover {
       background-color: $fontColor;

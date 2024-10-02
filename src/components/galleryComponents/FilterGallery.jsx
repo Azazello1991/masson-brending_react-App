@@ -28,11 +28,20 @@ const sortBy = [
     gender: "female",
   },
 ];
+
 const quantity = [
   { name: "По 16", quantity: 16 },
   { name: "По 8", quantity: 8 },
   { name: "По 4", quantity: 4 },
 ];
+
+const size = [
+  'XXL', 'XL', 'L', 'M', 'S'
+];
+
+const color = [
+  
+]
 
 const FilterGallery = () => {
   const dispatch = useDispatch();
