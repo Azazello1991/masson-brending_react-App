@@ -1,22 +1,31 @@
+import React from "react";
 import FilterProduct from "./FilterProduct";
 import BreadCrumbs from "./BreadCrumbs";
 import StarRatings from "react-star-ratings";
 import CommentForm from "./CommentForm";
+// swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Zoom } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/zoom";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { addPurchases } from "../../redux/slices/CartSlice";
-import { useEffect } from "react";
 import {
   setProductColor,
   setProductSize,
 } from "../../redux/slices/filterSlice";
 
+
+
 const Product = ({ product }) => {
+  const [openFormComment, setOpenFormComment] = React.useState(false);
   const dispatch = useDispatch();
   const { productQuantity, productSize, productColor } = useSelector(
     (state) => state.filterSlice.params
   );
-  const { purchases } = useSelector((state) => state.cartSlice);
 
   if (!productSize) {
     dispatch(setProductSize(product.sizes[0].toUpperCase()));
@@ -42,10 +51,6 @@ const Product = ({ product }) => {
     dispatch(addPurchases(buyObj));
   };
 
-  useEffect(() => {
-    console.log(purchases);
-  }, [purchases]);
-
   return (
     <section class="product">
       <div class="container product__container">
@@ -53,19 +58,29 @@ const Product = ({ product }) => {
         <BreadCrumbs title={product.title} />
 
         <div class="product__inner">
-          <div class="swiper-product swiper">
-            <div class="product__slider-items swiper-wrapper">
-              <a class="product__img">
-                <img
-                  class="product__photo"
-                  src={product.url}
-                  alt="фото продукта"
-                  width="535"
-                  height="530"
-                />
-              </a>
-            </div>
-          </div>
+          <Swiper
+            modules={[Navigation, Pagination, Zoom]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            zoom={true} // Включение увеличения
+            className="swiper-product"
+          >
+            {product.url.map((imgSrc, index) => (
+              <SwiperSlide key={index}>
+                <div className="swiper-zoom-container">
+                  <img
+                    className="product__photo"
+                    src={imgSrc}
+                    alt={`Product image ${index + 1}`}
+                    width="535"
+                    height="530"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
           <div class="product__description">
             <StarRatings
@@ -117,12 +132,15 @@ const Product = ({ product }) => {
 
         <div class="product__add-comments">
           <h2 class="product__title-comments">Відгуки</h2>
-          <button class="btn product__btn-add" type="button">
+          <button
+            class="btn product__btn-add"
+            onClick={() => setOpenFormComment(!openFormComment)}
+            type="button"
+          >
             Залишити відгук
           </button>
         </div>
-
-        <CommentForm />
+        {openFormComment && <CommentForm openFormComment={openFormComment} setOpenFormComment={setOpenFormComment} />}
       </div>
     </section>
   );

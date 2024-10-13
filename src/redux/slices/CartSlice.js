@@ -41,7 +41,6 @@ export const cartSlice = createSlice({
     },
 
     moreProduct: (state, action) => {
-      console.log(action);
       const product = state.purchases.find(
         (product) => product.id === action.payload
       );
@@ -60,10 +59,13 @@ export const cartSlice = createSlice({
     },
 
     deletProduct: (state, action) => {
-      state.purchases = state.purchases.filter(
-        (product) => product.id !== action.payload
+      const { id, size, color } = action.payload; // Предполагается, что action.payload будет содержать id, size и color
+      const newArr = state.purchases.filter(
+        (product) =>
+          !(product.id === id && product.size === size && product.color === color)
       );
-    },
+      state.purchases = newArr; // Обновляем состояние с новым массивом
+    }
   },
 });
 

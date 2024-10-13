@@ -51,6 +51,45 @@
     }
   }
 
+  &__fild--delivery {
+    margin-bottom: 10px;
+  }
+
+  &__departaments {
+    max-height: 200px;
+    overflow-y: auto;
+    border: solid 1px $accent;
+    padding: 8px;
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+
+    /* Стилизация scrollbar */
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $accent;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-track {
+      width: 2px;
+      background-color: #ffffff;
+    }
+  }
+
+  &__departament {
+    font-size: 18px;
+    margin-bottom: 8px;
+    cursor: pointer;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
   &__check-boxes {
     display: flex;
     column-gap: 90px;

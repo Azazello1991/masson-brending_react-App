@@ -1,11 +1,15 @@
 .catalog-page {
+  &__main {
+    padding-top: 200px;
+  }
+
   &__head {
     display: flex;
     column-gap: 40px;
     justify-content: space-between;
     align-items: start;
     margin-bottom: 120px;
-    padding-top: 240px;
+    /* padding-top: 240px; */
 
     @include r(768) {
       flex-direction: column;

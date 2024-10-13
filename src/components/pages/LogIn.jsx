@@ -1,15 +1,44 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
+  const modalRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate("/"); // Перенаправляем на главную страницу
+  };
+
+
+
+  useEffect(() => {
+    // Обработчик кликов на всем документе
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        handleClose(); // Закрываем модальное окно, если клик был вне него
+      }
+    };
+
+    // Добавляем обработчик события клика
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Убираем обработчик при размонтировании компонента
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <section class="sectioon log-in hidden">
+    <section class="sectioon log-in">
       <div class="log-in__container">
-        <div class="log-in__inner">
+        <div class="log-in__inner" ref={modalRef}>
           <div class="log-in__content">
             <h1 class="log-in__title">Вхід</h1>
-            <button class="log-in__regist" type="button">
+            <Link class="log-in__regist" to={"/registration"}>
               У мене ще немає облікового запису
-            </button>
+            </Link>
 
             <form class="form-log log-in__form" action="#" method="post">
               <div class="form-log__item">

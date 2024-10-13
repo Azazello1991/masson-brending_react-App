@@ -104,6 +104,6 @@ export const gallerySlice = createSlice({
   },
 });
 
-export const selecGalleryItems = (state) => state.galleryItemsItems; // useSelector
+export const selecGalleryItems = (state) => state.galleryItemsItems;
 
-/* export const { addId } = topSlice.actions */ export default gallerySlice.reducer;
+export default gallerySlice.reducer;

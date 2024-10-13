@@ -5,9 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Cabinet = () => {
   const { purchases } = useSelector((state) => state.cartSlice);
-  useEffect(() => {
-    console.log(purchases);
-  }, purchases);
 
   return (
     <div class="header__nav-top">
@@ -37,7 +34,7 @@ const Cabinet = () => {
           aria-label="Обране"
         ></a>
         <Link
-          to="/LogIn"
+          to="/logIn"
           class="header__log-in"
           type="button"
           title="Реєстрація"

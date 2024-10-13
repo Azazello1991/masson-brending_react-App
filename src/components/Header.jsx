@@ -1,13 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import Logo from "../images/logo-masons-shop.svg";
 import Categorys from "./headerComponents/Categorys";
 import Cabinet from "./headerComponents/Cabinet";
 import SearchHead from "./headerComponents/SearchHead";
 
 const Header = () => {
-  const [isSticky, setIsSticky] = useState(false); 
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +17,10 @@ const Header = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll); 
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll); 
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -31,7 +30,7 @@ const Header = () => {
         <div class="header__top">
           <SearchHead />
 
-          <Link to='/' class="logo">
+          <Link to="/" class="logo">
             <img
               class="logo__icon"
               src={Logo}

@@ -1,6 +1,7 @@
 import React from "react";
 // redux
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Catalog = () => {
   const cardsCatalog = useSelector((state) => state.catalogSlice.catalogItems);
@@ -18,7 +19,7 @@ const Catalog = () => {
             return (
               <li className="catalog__item">
                 <article class="card" key={id}>
-                  <a class="card__wrapper" href="#">
+                  <Link class="card__wrapper" to={'/gallery'}>
                     <div class="card__img">
                       <img
                         class="card__pictur"
@@ -30,7 +31,7 @@ const Catalog = () => {
                     </div>
                     <h2 class="card__title">{card.title}</h2>
                     <span class="card__deskription">{card.description}</span>
-                  </a>
+                  </Link>
                 </article>
               </li>
             );

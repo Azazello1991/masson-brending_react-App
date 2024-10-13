@@ -1,15 +1,42 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+  const modalRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate("/"); // Перенаправляем на главную страницу
+  };
+
+  useEffect(() => {
+    // Обработчик кликов на всем документе
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        handleClose(); // Закрываем модальное окно, если клик был вне него
+      }
+    };
+
+    // Добавляем обработчик события клика
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Убираем обработчик при размонтировании компонента
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <section class="section registration hidden">
+    <section class="section registration">
       <div class="registration__container">
-        <div class="registration__inner">
+        <div class="registration__inner" ref={modalRef}>
           <div class="registration__content">
             <h1 class="registration__title">Реєстрація</h1>
-            <a class="registration__log-in" href="#">
+            <Link class="registration__log-in" to={'/logIn'}>
               У мене є обліковий запис
-            </a>
+            </Link>
 
             <form class="registration-form" action="#" method="post">
               <div class="registration-form__item">

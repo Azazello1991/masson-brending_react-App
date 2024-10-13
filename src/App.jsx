@@ -6,6 +6,7 @@ import LogIn from "./components/pages/LogIn";
 import Gallery from "./components/pages/Gallery";
 import ProductPage from "./components/pages/ProductPage";
 import Cart from "./components/pages/Cart";
+import Registration from "./components/pages/Registration";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     element: <Gallery />,
   },
   {
-    path: "/LogIn",
+    path: "/logIn",
     element: <LogIn />,
   },
 
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart/>,
+  },
+
+  {
+    path: "/registration",
+    element: <Registration/>,
   },
 ]);
 

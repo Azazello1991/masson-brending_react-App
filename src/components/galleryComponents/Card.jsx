@@ -22,7 +22,7 @@ const Card = ({ url, title, price, description, rating, category, id }) => {
             alt="Фото товару"
           />
         </div>
-        <StarRatings
+        {rating && <StarRatings
           rating={rating}
           starRatedColor="gold" // колір заповнених зірок
           starHoverColor="yellow" // колір при наведенні
@@ -30,12 +30,12 @@ const Card = ({ url, title, price, description, rating, category, id }) => {
           starSpacing="2px" // дистанція між зірками
           numberOfStars={5} // кількість
           name="rating" // ім'я рейтинга (необов'язково)
-        />
+        />}
         <h3 class="card__title tr">{title}</h3>
         <span class="card__deskription">{description}</span>
-        <span class="card__pric">
+        {price&&<span class="card__pric">
           {price} <span>₴</span>
-        </span>
+        </span>}
       </Link>
     </article>
   );

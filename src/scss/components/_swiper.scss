@@ -197,6 +197,7 @@
   }
 }
 
+.swiper-product,
 .sale-slider,
 .example-slider {
   .swiper-button-prev::after,
@@ -215,6 +216,7 @@
   }
 }
 
+.swiper-product,
 .swiper-button-next,
 .swiper-button-prev {
   transition: all 0.3s ease-in-out;
@@ -234,5 +236,14 @@
 .swiper-button-prev {
   &:hover {
     transform: translateX(-5px);
+  }
+}
+
+// ============================== swiper-product ============================= //
+
+.swiper-product {
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    filter: invert(26%) sepia(49%) saturate(1391%) hue-rotate(0deg) brightness(104%) contrast(101%);
   }
 }

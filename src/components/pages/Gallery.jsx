@@ -11,6 +11,7 @@ import NotFoundBlock from "../pages/NotFoundBlock/NotFoundBlock";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsRes } from "../../redux/slices/asyncProductsSlice";
 import PaginationReactGallery from "../galleryComponents/PaginationReactGallery";
+import BreadCrumbsGallery from "../galleryComponents/BreadCrumbsGallery";
 
 const Gallery = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Gallery = () => {
   // - передаємо через параметри в функцію fetchProductsRes
 
   const fetchProducts = async () => {
-    const gender = sortBy.gender? `&gender=${sortBy.gender}`: '';
+    const gender = sortBy.gender ? `&gender=${sortBy.gender}` : "";
     const limit = quantity.quantity;
     const page = currentPage;
     const order = sortBy.price === "-price" ? "asc" : "desc";
@@ -33,7 +34,7 @@ const Gallery = () => {
       ? "&sortBy=rating"
       : "";
     const search = searchValue ? `&search=${searchValue}` : "";
-    const idProduct = '';
+    const idProduct = "";
 
     dispatch(
       fetchProductsRes({
@@ -83,11 +84,12 @@ const Gallery = () => {
   return (
     <>
       <Header />
-      <main class="main">
+      <main class="main catalog-page__main">
+        <BreadCrumbsGallery />
         <section class="section catalog-page">
           <div class="container">
             <div class="catalog-page__head">
-              <div class="catalog-page__title">
+              <div class="catalog-page__title-inner">
                 <h2 class="catalog-page__title">
                   <span class="section-title-slice">Фут</span>болки
                 </h2>
@@ -98,14 +100,14 @@ const Gallery = () => {
             </div>
             {isLoading === "error" ? (
               <NotFoundBlock />
+            ) : isLoading === "loading" ? (
+              <ul class="catalog-page__catalog catalog-list">{skeletons}</ul>
             ) : (
-              <ul class="catalog-page__catalog catalog-list">
-                {isLoading === "loading" ? skeletons : arrProducts}
-              </ul>
+              <ul class="catalog-page__catalog catalog-list">{arrProducts}</ul>
             )}
 
             {/* <PaginationGallery /> */}
-            <PaginationReactGallery/>
+            <PaginationReactGallery />
           </div>
         </section>
       </main>

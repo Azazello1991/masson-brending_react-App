@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   /* column-gap: 15px; */
-  max-width: 490px;
+  max-width: 550px;
   min-width: 325px;
   margin-bottom: 50px;
 
@@ -52,7 +52,7 @@
     &::after {
       content: "";
       position: absolute;
-      /* background-image: url("../../images/sprite.svg#icon-arrow-right"); */
+      background-image: url("../../../images/sprite.svg#icon-arrow-right");
       background-repeat: no-repeat;
       background-position: center;
       top: 0;
@@ -76,17 +76,20 @@
   &__parameters {
     position: absolute;
     padding: 0px 15px;
-    width: 100%;
+    width: fit-content;
+    opacity: 1;
     top: 120%;
     left: 0;
     overflow: hidden;
     z-index: 10;
     cursor: pointer;
-    transition: all 0.8s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+    transition: all 0.1s cubic-bezier(0.6, -0.28, 0.74, 0.05);
   }
 
   &__parameters.hidden {
+    width: 0;
     height: 0;
+    opacity: 0;
     overflow: hidden;
   }
 

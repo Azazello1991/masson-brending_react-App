@@ -1,27 +1,31 @@
 .recommend {
+  &__title {
+    font-size: 36px;
+    @extend %montserrat-700;
 
-		&__title {
-         font-size: 36px;
-         @extend %montserrat-700;
+    @include r(768) {
+      font-size: 28px;
+    }
+  }
 
-         @include r(768) {
-            font-size: 28px;
-         }
-		}
+  &__slider {
+    margin-bottom: 30px;
+  }
 
-		&__swiper {
-         padding: 50px 0 50px 20px;
-         // overflow: visible;
+  &__slider {
+    padding: 50px 0 50px 20px;
 
-         @include r(576) {
-            width: 350px;
-            margin: 0 auto;
-         }
-		}
+    @include r(576) {
+      width: 350px;
+      margin: 0 auto;
+    }
+    .card__img {
+      width: 200px;
+      height: 200px;
+    }
+  }
 }
 .product {
-
-		&__recommend {
-		}
+  &__recommend {
+  }
 }
-

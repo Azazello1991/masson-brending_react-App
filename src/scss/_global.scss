@@ -1,39 +1,39 @@
 html {
-   scroll-behavior: smooth;
-   scroll-padding-top: 30%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 30%;
 }
 
 body {
-   @extend %roboto-300;
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   line-height: 1.2;
-   background-color: $bgColor;
-   font-size: 32px;
-   color: $fontColor;
+  @extend %roboto-300;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  background-color: $bgColor;
+  font-size: 32px;
+  color: $fontColor;
 }
 
-.lock { 
-   overflow: hidden 
+.lock {
+  overflow: hidden;
 }
 
 .container {
-   max-width: 1120px;
-   padding: 0 15px;
-   margin: 0 auto;
+  max-width: 1120px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
 .main {
-   flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 .section {
-   margin-bottom: 150px;
+  margin-bottom: 150px;
 
-   @media (max-width: 576px) {  
-      margin-bottom: 100px;
-   }
+  @media (max-width: 576px) {
+    margin-bottom: 100px;
+  }
 }
 
 .sr-only {
@@ -50,171 +50,169 @@ body {
 }
 
 .btn-icon {
-   cursor: pointer;
-   transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
-   &:hover {
-      outline: 1px solid $accent;
-   }
+  &:hover {
+    outline: 1px solid $accent;
+  }
 
-   &:active {
-      box-shadow: 0px 0px 5px 2px $accent;
-   }
+  &:active {
+    box-shadow: 0px 0px 5px 2px $accent;
+  }
 }
 
 .input {
-   transition: all 0.3s ease-in-out;
-   outline: 0 solid transparent;
-   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: 0 solid transparent;
+  cursor: pointer;
 
-   &:hover {
-      border: 1px solid $accent;
-   }
+  &:hover {
+    border: 1px solid $accent;
+  }
 
-   &:focus {
-      border: 1px solid $accent;
-   }
-   &:focus::placeholder {
-      color: transparent;
-   }
+  &:focus {
+    border: 1px solid $accent;
+  }
+  &:focus::placeholder {
+    color: transparent;
+  }
 
-   &::placeholder {
-      position: relative;
-      font-size: 12px;
-      color: $fontColor;
-   }
+  &::placeholder {
+    position: relative;
+    font-size: 12px;
+    color: $fontColor;
+  }
 }
 
 .btn {
-   background-color: $accent;
-   border: 1px solid transparent;
-   padding: 8px 15px;
-   transition: all 0.3s ease-in-out;
-   cursor: pointer;
-   
-   
-   &:hover {
-      color: #000000;
-      background-color: $fontColor;
-      box-shadow: inset 0px 0px 47px 10px rgba(199,172,40,1);
-      border: 1px solid$accent;
-   }
-   
-   &:active {
-      box-shadow:0px 0px 113px 10px rgb(223, 181, 14);
-      color: #000000;
-   }
+  background-color: $accent;
+  border: 1px solid transparent;
+  padding: 8px 15px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: #000000;
+    background-color: $fontColor;
+    box-shadow: inset 0px 0px 47px 10px rgba(199, 172, 40, 1);
+    border: 1px solid$accent;
+  }
+
+  &:active {
+    box-shadow: 0px 0px 113px 10px rgb(223, 181, 14);
+    color: #000000;
+  }
 }
 
 .link {
-   border: 1px solid transparent;
-   
-   &:hover {
-      color: $accent;
-      border-bottom: 1px solid$accent;
-   }
+  border: 1px solid transparent;
+
+  &:hover {
+    color: $accent;
+    border-bottom: 1px solid$accent;
+  }
 }
 
 .section-title {
-   font-size: 72px;
-   @extend %montserrat-700;
-   line-height: 1;
-   text-align: center;
+  font-size: 72px;
+  @extend %montserrat-700;
+  line-height: 1;
+  text-align: center;
 
-   @media (max-width: 992px) {  
-      font-size: 52px;
-   }
+  @media (max-width: 992px) {
+    font-size: 52px;
+  }
 }
 
 .section-text {
-   color: $silverLight;
-   @extend %montserratAlternates-300;
-   text-align: center;
-   margin-bottom: 120px;
+  color: $silverLight;
+  @extend %montserratAlternates-300;
+  text-align: center;
+  margin-bottom: 120px;
 
-   @media (max-width: 992px) {  
-      font-size: 20px;
-      margin-bottom: 80px;
-   }
+  @media (max-width: 992px) {
+    font-size: 20px;
+    margin-bottom: 80px;
+  }
 }
 
 .section-title-slice {
-   color: $accent;
+  color: $accent;
 }
 
-
 .swiper-dot {
-   display: inline-block;
-   width: 15px;
-   height: 15px;
-   opacity: 1;
-   background-color: $silverLight;
-   transition: all 0.2s ease-in-out;
-   outline: 0 solid transparent;
-   border-radius: 50%;
-   
-   &:focus {
-      outline: 2px solid $accent;
-   }
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  opacity: 1;
+  background-color: $silverLight;
+  transition: all 0.2s ease-in-out;
+  outline: 0 solid transparent;
+  border-radius: 50%;
 
-   &:hover {
-      outline: 2px solid $accent;
-      background-color: #FFF2ED;
-   }
+  &:focus {
+    outline: 2px solid $accent;
+  }
 
-   &:active {
-      background-color: #FFAE94;
-      outline: 0 solid transparent;
-   }
+  &:hover {
+    outline: 2px solid $accent;
+    background-color: #fff2ed;
+  }
 
-   &:not(:last-child) {
-      margin-right: 15px;
-   }
+  &:active {
+    background-color: #ffae94;
+    outline: 0 solid transparent;
+  }
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
 }
 
 .swiper-dot--active {
-   background-color: $accent;
+  background-color: $accent;
 }
 
 .fild {
-   width: 100%;
-   font-size: 12px;
-   line-height: 1.3;
-   color: $accent;
-   border: 1px solid transparent;
-   outline: 0px solid transparent;
-   transition: all 0.3s ease-in-out;
+  width: 100%;
+  font-size: 12px;
+  line-height: 1.3;
+  color: $accent;
+  border: 1px solid transparent;
+  outline: 0px solid transparent;
+  transition: all 0.3s ease-in-out;
 
-   &::placeholder {
-      color: $accent;
-      @extend %inter-400;
-   }
+  &::placeholder {
+    color: $accent;
+    @extend %inter-400;
+  }
 
-   &:focus::placeholder {
-      color: transparent;
-   }
+  &:focus::placeholder {
+    color: transparent;
+  }
 
-   &:hover {
-      border: solid 1px $accent;
-   }
+  &:hover {
+    border: solid 1px $accent;
+  }
 
-   &:focus {
-      border: solid 1px $accent;
-   }
+  &:focus {
+    border: solid 1px $accent;
+  }
 }
 
 .error {
-   border: 1px solid rgb(255, 0, 0);
+  border: 1px solid rgb(255, 0, 0);
 
-   &:hover {
-      border: 1px solid rgb(255, 0, 0);
-   }
+  &:hover {
+    border: 1px solid rgb(255, 0, 0);
+  }
 
-   &:focus {
-      border: 1px solid rgb(255, 0, 0);
-   }
+  &:focus {
+    border: 1px solid rgb(255, 0, 0);
+  }
 }
 
 .success {
-   border: 1px solid $accent;
+  border: 1px solid $accent;
 }

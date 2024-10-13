@@ -1,9 +1,9 @@
 import React from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper/modules";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 //swiper
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
 import "swiper/css/autoplay";
 import "swiper/scss/navigation";

@@ -48,13 +48,11 @@ export const saleSlice = createSlice({
 
   reducers: {
     addId(state, action) {
-      state.activeId = action.payload;
+      
     },
   },
 });
 
 export const selectTopItems = (state) => state.topItems; // useSelector
-
-/* export const { addId } = topSlice.actions; */
 
 export default saleSlice.reducer;

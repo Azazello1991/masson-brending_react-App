@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -19,6 +19,35 @@ const FilterProduct = ({ color, sizes }) => {
   const [openPopupColor, setOpenPopupColor] = React.useState(false);
   const [indexSize, setIndexSize] = React.useState(0);
   const [indexColor, setIndexColor] = React.useState(0);
+  // закриття фільтру кліком поза ним
+  const sizeRef = useRef(null);
+  const colorRef = useRef(null);
+
+  // функція що закрива фільтри
+  const handleClose = () => {
+    setOpenPopupSize(false);
+    setOpenPopupColor(false);
+  };
+
+  // функція що перевіря евент
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        !sizeRef.current.contains(event.target) &&
+        !colorRef.current.contains(event.target)
+      ) {
+        handleClose(); // Закрываем модальное окно, если клик был вне него
+      }
+    };
+
+    // Добавляем обработчик события клика
+    document.addEventListener("click", handleClickOutside);
+
+    // Убираем обработчик при размонтировании компонента
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [sizeRef]);
 
   const getMoreQuantity = () => {
     dispatch(setProductQuantityMore());
@@ -36,7 +65,7 @@ const FilterProduct = ({ color, sizes }) => {
   };
 
   const getColor = (i, colorItem) => {
-    console.log(colorItem)
+    console.log(colorItem);
     dispatch(setProductColor(colorItem));
     setIndexColor(i);
     setOpenPopupColor(!openPopupColor);
@@ -102,7 +131,8 @@ const FilterProduct = ({ color, sizes }) => {
         <div class="filter__inner">
           <h3 class="sr-only">Сортувати по разміру</h3>
           <button
-            class="filter__result js-result"
+            ref={sizeRef}
+            class={openPopupSize ? "filter__result active" : "filter__result"}
             onClick={() => {
               setOpenPopupSize(!openPopupSize);
             }}
@@ -111,8 +141,14 @@ const FilterProduct = ({ color, sizes }) => {
           >
             {sizes[indexSize].toUpperCase()}
           </button>
-          {openPopupSize && (
-            <ul class="filter__parameters">
+          {
+            <ul
+              class={
+                openPopupSize
+                  ? "filter__parameters"
+                  : "filter__parameters hidden"
+              }
+            >
               {sizes.map((size, i) => (
                 <li
                   onClick={() => getSize(i, size)}
@@ -123,7 +159,7 @@ const FilterProduct = ({ color, sizes }) => {
                 </li>
               ))}
             </ul>
-          )}
+          }
         </div>
       </li>
 
@@ -132,7 +168,8 @@ const FilterProduct = ({ color, sizes }) => {
         <div class="filter__inner">
           <h3 class="sr-only">Сортувати по кольору</h3>
           <button
-            class="filter__result js-result"
+            ref={colorRef}
+            class={openPopupColor ? "filter__result active" : "filter__result"}
             onClick={() => {
               setOpenPopupColor(!openPopupColor);
             }}
@@ -141,8 +178,14 @@ const FilterProduct = ({ color, sizes }) => {
           >
             {color[indexColor]}
           </button>
-          {openPopupColor && (
-            <ul class="filter__parameters">
+          {
+            <ul
+              class={
+                openPopupColor
+                  ? "filter__parameters"
+                  : "filter__parameters hidden"
+              }
+            >
               {color.map((colorItem, i) => (
                 <li
                   class="filter__parameter js-parameter"
@@ -153,7 +196,7 @@ const FilterProduct = ({ color, sizes }) => {
                 </li>
               ))}
             </ul>
-          )}
+          }
         </div>
       </li>
     </ul>

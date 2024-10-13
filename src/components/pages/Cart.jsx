@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 import CartForm from "../cartComponents/CartForm";
+import { useEffect, useState } from "react";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -12,6 +13,7 @@ import {
   lessProduct,
   deletProduct,
 } from "../../redux/slices/CartSlice";
+import BreadCrumbsCart from "../cartComponents/BreadCrumbsCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -60,14 +62,15 @@ const Cart = () => {
 
   // Функція для видалення продукту:
   const deleteProductById = (id) => {
-    dispatch(deletProduct(id))
-  }
+    dispatch(deletProduct(id));
+  };
 
   return (
     <>
       <Header />
       <main className="main">
         <section className="cart">
+          <BreadCrumbsCart />
           <div className="container">
             <h1 className="cart__title">Кошик з товаром:</h1>
 
@@ -102,7 +105,9 @@ const Cart = () => {
                           <div className="filter__inner-order">
                             <div className="filter__order-item">
                               <button
-                                onClick={()=>dispatch(lessProduct(product.id))}
+                                onClick={() =>
+                                  dispatch(lessProduct(product.id))
+                                }
                                 className="filter__btn btn--less"
                                 type="button"
                                 id="btn-less"
@@ -129,7 +134,9 @@ const Cart = () => {
 
                             <div className="filter__order-item">
                               <button
-                                onClick={()=>dispatch(moreProduct(product.id))}
+                                onClick={() =>
+                                  dispatch(moreProduct(product.id))
+                                }
                                 className="filter__btn btn--more"
                                 type="button"
                                 id="btn-more"
@@ -205,7 +212,17 @@ const Cart = () => {
                         {product.price * product.quantity}
                         <span className="cart__currency">{" грн"}</span>
                       </span>
-                      <button onClick={()=>deleteProductById(product.id)} className="cart__delete" type="button"></button>
+                      <button
+                        onClick={() =>
+                          deleteProductById({
+                            id: product.id,
+                            size: product.size,
+                            color: product.color,
+                          })
+                        }
+                        className="cart__delete"
+                        type="button"
+                      ></button>
                     </div>
                   </li>
                 ))
@@ -221,7 +238,7 @@ const Cart = () => {
           </div>
         </section>
 
-        <CartForm />
+        <CartForm purchasesData={purchases} />
       </main>
       <Footer />
     </>

@@ -32,7 +32,6 @@ const Form = () => {
   const onChangeName = (e) => {
     const { value } = e.target; // значення поля
     dispatch(changeName(value.trim())) // надсилаемо в redux
-    console.log(collFormData)
 
     if (!patterns.namePattern.test(value.trim())) {
       e.target.style.border = "1px solid red";

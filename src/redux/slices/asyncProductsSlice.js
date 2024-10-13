@@ -45,6 +45,7 @@ export const asyncProductsSlice = createSlice({
       .addCase(fetchProductsRes.fulfilled, (state, action) => {
         // Успіх
         state.products = action.payload.data;
+        
         state.pagesGallery = action.payload.dataNoLimit.data.length /  action.payload.data.length
         state.isLoading = "success";
       })
