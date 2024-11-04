@@ -39,9 +39,9 @@ export default () => {
       {productsExample.map((products, i) => {
         return (
           <SwiperSlide key={products.id}>
-            <div class="example__slide swiper-slide">
-              <a class="example__slide-link" href="#">
-                <div class="example__slide-wrapper">
+            <div className="example__slide swiper-slide">
+              <a className="example__slide-link" href="#">
+                <div className="example__slide-wrapper">
                   <img src={products.url} alt="Продукт"></img>
                 </div>
               </a>

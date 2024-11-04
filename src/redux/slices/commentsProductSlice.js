@@ -39,7 +39,6 @@ export const commentsProductSlice = createSlice({
   reducers: {
     newComment(state, action) {
       state.comments.push(action.payload);
-      console.log(action.payload)
     },
   },
 });

@@ -1,14 +1,17 @@
 import React from "react";
 import VideoLightbox from "./LightVideo";
+import { useTranslation } from 'react-i18next';
 
 const Video = () => {
+  const { t } = useTranslation();
+
   return (
-    <section class="section video" id="video">
-      <div class="container">
-        <h2 class="vide__title">
-          <span class="section-title-slice">Ще є </span>сумніви?
+    <section className="section video" id="video">
+      <div className="container">
+        <h2 className="vide__title">
+          <span className="section-title-slice">{t("video.titleOne")}</span>{t("video.titleTwo")}
         </h2>
-        <p class="video__text">Тоді подивися це відео і сам все зрозумієш</p>
+        <p className="video__text">{t("video.subtitle")}</p>
 
         <VideoLightbox />
         

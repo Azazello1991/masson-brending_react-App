@@ -29,9 +29,9 @@ const VideoModal = () => {
   return (
     <div>
       {videoItems.map((video) => (
-        <div class="video__link"> 
+        <div className="video__link"> 
           <img
-            class="video__screen"
+            className="video__screen"
             key={video.id}
             src={video.thumbnail}
             alt={`Thumbnail ${video.id}`}

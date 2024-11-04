@@ -2,10 +2,10 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div class="container">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+    <div className="container">
+      <div className="dot"></div>
+      <div className="dot"></div>
+      <div className="dot"></div>
     </div>
   );
 };

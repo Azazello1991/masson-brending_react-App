@@ -12,7 +12,7 @@ import Catalog from "./mainComponents/Catalog";
 
 const Main = () => {
   return (
-    <main class="main">
+    <main className="main">
       <Hero />
       <About />
       <Example />

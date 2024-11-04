@@ -1,9 +1,6 @@
 .example-slider {
   padding: 50px 0;
 
-  .swiper-pagination {
-  }
-
   .example {
     &__slider-wrapper {
       position: relative;
@@ -40,13 +37,14 @@
   }
 }
 
-.swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
+span.swiper-pagination-bullet {
+  width: 15px;
+  height: 6px;
+  border-radius: 0;
   border: 1px solid $accent;
 }
 
-.swiper-pagination-bullet-active {
+span.swiper-pagination-bullet-active {
   background-color: $accent;
 }
 
@@ -148,7 +146,7 @@
       }
 
       &:hover {
-        color: $bgColor;
+        color: $accent;
       }
 
       &:active {

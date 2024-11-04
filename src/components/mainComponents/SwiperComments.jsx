@@ -33,14 +33,14 @@ const CustomSwiper = () => {
 
   return (
     <div>
-      <div class="comments__swiper-arrows">
+      <div className="comments__swiper-arrows">
         <button
           ref={prevRef}
-          class="comments__arrow comments__arrow--prev"
+          className="comments__arrow comments__arrow--prev"
         ></button>
         <button
           ref={nextRef}
-          class="comments__arrow comments__arrow--next"
+          className="comments__arrow comments__arrow--next"
         ></button>
       </div>
 

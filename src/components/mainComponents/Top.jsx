@@ -1,15 +1,18 @@
 import React from "react";
 import TopMixItUp from "./TopMixItUp";
+import { useTranslation } from 'react-i18next';
 
 const Top = () => {
+  const { t } = useTranslation();
+
   return (
-    <section class="section top" id="top">
-      <div class="container">
-        <h2 class="section-title">
-          <span class="tr">Топ</span>
-          <span class="section-title-slice tr">продаж</span>
+    <section className="section top" id="top">
+      <div className="container">
+        <h2 className="section-title">
+          <span className="tr">{t("top.titleOne")}</span>
+          <span className="section-title-slice tr">{t("top.titleTwo")}</span>
         </h2>
-        <p class="section-text tr">Те, що вам сподобається</p>
+        <p className="section-text tr">{t("top.subtitle")}</p>
         <TopMixItUp/>
       </div>
     </section>

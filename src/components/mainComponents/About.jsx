@@ -1,15 +1,18 @@
 import React from "react";
 import AboutCard from "./AboutCard";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
-    <section class="section about" id="about">
-      <div class="container">
-        <h2 class="section-title about__title">
-          <span class="tr">Наші</span>
-          <span class="section-title-slice about__title-slice tr">послуги</span>
+    <section className="section about" id="about">
+      <div className="container">
+        <h2 className="section-title about__title">
+          <span className="tr">{t("about.titleOne")}</span>
+          <span className="section-title-slice about__title-slice tr">{t("about.titleTwo") }</span>
         </h2>
-        <p class="section-text about__text tr">Головна діяльність масонств</p>
+        <p className="section-text about__text tr">{t("about.subtitle") }</p>
         <AboutCard />
       </div>
     </section>

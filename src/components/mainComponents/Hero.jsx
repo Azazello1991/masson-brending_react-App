@@ -1,19 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   return (
-    <section class="section hero">
-      <div class="container hero__contain">
-        <div class="hero__wrapper">
-          <h1 class="hero__title">
-            masons <span class="hero__title-slice">branding </span>wordshop
+    <section className="section hero">
+      <div className="container hero__contain">
+        <div className="hero__wrapper">
+          <h1 className="hero__title">
+            masons <span className="hero__title-slice">branding </span>wordshop
           </h1>
-          <p class="hero__text tr">
-            Високоякісний друк Брендування одягу та аксесуарів
+          <p className="hero__text tr">
+            {t("hero.subtitle")}
           </p>
-          <Link class="btn hero__link tr" to='/gallery'>
-            Каталог
+          <Link className="btn hero__link tr" to='/gallery'>
+            {t("hero.buttonCatalog")}
           </Link>
         </div>
       </div>

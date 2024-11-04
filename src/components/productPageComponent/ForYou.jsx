@@ -12,8 +12,10 @@ import {
 } from "swiper/modules";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../galleryComponents/Card";
+import { useTranslation } from "react-i18next";
 
 const ForYou = () => {
+  const { t } = useTranslation();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef(null); // Реф для слайдера
@@ -24,7 +26,7 @@ const ForYou = () => {
   return (
     <section className="recommend">
       <div className="container">
-        <h2 className="recommend__title">Рекомендуємо вам:</h2>
+        <h2 className="recommend__title">{t('productPage.recomTitle') }</h2>
         <Swiper
           className="recommend__slider"
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}

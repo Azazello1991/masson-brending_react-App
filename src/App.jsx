@@ -7,6 +7,8 @@ import Gallery from "./components/pages/Gallery";
 import ProductPage from "./components/pages/ProductPage";
 import Cart from "./components/pages/Cart";
 import Registration from "./components/pages/Registration";
+import './i18n'
+import OrderHistoryPage from "./components/pages/orderHistoryPage/OrderHistoryPage";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/registration",
     element: <Registration/>,
+  },
+  {
+    path: "/history-page",
+    element: <OrderHistoryPage/>,
   },
 ]);
 

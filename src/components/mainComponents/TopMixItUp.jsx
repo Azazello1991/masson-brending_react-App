@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Mixitup from "mixitup";
+import { useTranslation } from "react-i18next";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { addId } from "../../redux/slices/topSlice";
@@ -11,6 +12,7 @@ const TopMixItUp = () => {
   const topCategores = useSelector((state) => state.topSlice.topCategory);
   const activId = useSelector((state) => state.topSlice.activeId);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const mixer = Mixitup(containerRef.current, {
@@ -32,17 +34,16 @@ const TopMixItUp = () => {
       {/* Фильтры */}
       <ul className="filter-buttons gallery top__gallery">
         {topCategores.map((category, i) => (
-          <li class="gallery__category" key={category.id}>
+          <li className="gallery__category" key={category.id}>
             <button
               data-filter={category.filter}
-              class="btn gallery__btn active"
               className={
                 activId === i ? "btn gallery__btn active" : "btn gallery__btn"
               }
               type="button"
               onClick={() => dispatch(addId(i))}
             >
-              {category.name}
+              {t(category.nameKey)}
             </button>
           </li>
         ))}
@@ -51,7 +52,7 @@ const TopMixItUp = () => {
       {/* Контейнер с элементами */}
       <ul ref={containerRef} className="mix-container gallery__items">
         {topItems.map((item) => (
-          <Card {...item}/>
+          <Card {...item} />
         ))}
       </ul>
     </div>

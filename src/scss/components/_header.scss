@@ -80,6 +80,7 @@
   &__log-in {
     @extend %inter-400;
     font-size: 18px;
+    padding: 2px;
     background-color: transparent;
     border: 1px solid transparent;
     color: $accent;
@@ -88,7 +89,7 @@
     cursor: pointer;
 
     &:hover {
-      border: 1px solid #09d135;
+      box-shadow: 0 0 5px #ffc700;
     }
 
     @include r(768) {

@@ -12,6 +12,8 @@ import filterSlice from "./slices/filterSlice";
 import cartSlice from "./slices/CartSlice";
 import commentsProductSlice from "./slices/commentsProductSlice";
 import formOrderSlice from "./slices/formOrderSlice";
+import logInSlice from "./slices/logInSlice";
+import favoriteSlice from "./slices/favoriteSlice";
 
 export const store = configureStore({
   reducer: {
@@ -28,5 +30,7 @@ export const store = configureStore({
     cartSlice,
     commentsProductSlice,
     formOrderSlice,
+    logInSlice,
+    favoriteSlice,
   },
 });

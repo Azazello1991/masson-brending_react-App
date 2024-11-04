@@ -1,0 +1,296 @@
+{
+  "search": "Пошук",
+  "category": {
+    "services": "Послуги",
+    "example": "Приклад",
+    "top": "Топ",
+    "catalog": "Каталог",
+    "comments": "Відгуки",
+    "aboutUs": "Про нас",
+    "contacts": "Контакти"
+  },
+  "hero": {
+    "subtitle": "Високоякісний друк, брендування одягу та аксесуарів",
+    "buttonCatalog": "КАТАЛОГ"
+  },
+  "about": {
+    "titleOne": "Наші ",
+    "titleTwo": "послуги",
+    "subtitle": "Головна діяльність масонств",
+
+    "cards": {
+      "button": "Детальніше",
+      "card_1": {
+        "title": "Друк флекс/флок плівкою",
+        "description": "Якісний друк при малих тиражах."
+      },
+      "card_2": {
+        "title": "Друк на Ваших матеріалах",
+        "description": "Допомога з матеріалами."
+      },
+      "card_3": {
+        "title": "Друк на кераміці",
+        "description": "Зробимо стильною вашу чашку."
+      },
+      "card_4": {
+        "title": "Реставрація зображень",
+        "description": "Професійна цифрова реставрація."
+      },
+      "card_5": {
+        "title": "Ламінація Ваших речей",
+        "description": "Дамо часу улюбленим речам."
+      },
+      "card_6": {
+        "title": "Друк банерів",
+        "description": "Зроби подарунок на всю стіну!"
+      }
+    }
+  },
+  "example": {
+    "titleOne": "Приклад ",
+    "titleTwo": "друку",
+    "subtitle": "Це може бути на тобі"
+  },
+  "sale": {
+    "titleOne": "Акції ",
+    "titleTwo": "та пропозиції",
+    "subtitle": "Встигни вирвати собі",
+    "slider": {
+      "title": "Русский корабль...",
+      "description": "Купи футболку і 10% з кожної покупки піде на потреби ЗСУ, купи стильну футболку і підтримай свого брата на фронті",
+      "button": "ДЕТАЛЬНІШЕ",
+      "altPhoto": "фото продукта"
+    }
+  },
+  "top": {
+    "titleOne": "Топ ",
+    "titleTwo": "продаж",
+    "subtitle": "Те, що вам сподобається",
+
+    "category": {
+      "all": "Всі",
+      "lamination": "Ламінація",
+      "clothing": "Одяг",
+      "mugs": "Кружки",
+      "print": "Прінт",
+      "banners": "Банери",
+      "photo": "Фото"
+    },
+
+    "mixCarts": {
+      "title_0": "Футболка 'Home'",
+      "description_0": "Еко матеріали",
+      "title_1": "Чашка",
+      "description_1": "Еко матеріали",
+      "title_2": "Футболка Жовта",
+      "description_2": "Еко матеріали",
+      "title_3": "Фотоприколи",
+      "description_3": "Еко матеріали",
+      "title_4": "Баннер 2х2 метри",
+      "description_4": "Еко матеріали",
+      "title_5": "Меню",
+      "description_5": "Еко матеріали",
+      "title_6": "Скидки",
+      "description_6": "Еко матеріали",
+      "title_7": "Чашка",
+      "description_7": "Еко матеріали"
+    }
+  },
+
+  "catalog": {
+    "titleOne": "Ката",
+    "titleTwo": "лог",
+    "subtitle": "Вибирай все, що до душ",
+
+    "catalogCards": {
+      "title_0": "Футболка Чоловіча",
+      "description_0": "Еко матеріали",
+      "title_1": "Футболка Жіноча",
+      "description_1": "Еко матеріали",
+      "title_2": "Худі",
+      "description_2": "Еко матеріали",
+      "title_3": "Чашки з мемасами",
+      "description_3": "Еко матеріали",
+      "title_4": "Рюкзаки",
+      "description_4": "Еко матеріали",
+      "title_5": "Сумочки",
+      "description_5": "Еко матеріали",
+      "title_6": "Світшоти",
+      "description_6": "Еко матеріали",
+      "title_7": "Желетки чоловічі",
+      "description_7": "Еко матеріали",
+      "title_8": "Желетки жіночі",
+      "description_8": "Еко матеріали"
+    }
+  },
+
+  "comments": {
+    "titleOne": "Від",
+    "titleTwo": "гу",
+    "titleThree": "ки",
+    "subtitle": "Тільки подивися, що про нас говорить твоя сусідка"
+  },
+
+  "video": {
+    "titleOne": "Ще є ",
+    "titleTwo": "сумніви?",
+    "subtitle": "Тоді подивися це відео і сам все зрозумієш"
+  },
+
+  "form": {
+    "titleOne": "Зв'яжіться з ",
+    "titleTwo": "нами",
+    "subtitle": "Це швидко та зручно",
+    "placeholders": {
+      "name": "Ваше ім'я*",
+      "mail": "Mail*",
+      "phone": "Телефон*",
+      "comment": "Примітка"
+    },
+    "formButton": "НАДІСЛАТИ"
+  },
+
+  "contacts": {
+    "cardOne": {
+      "title": "Графік",
+      "days": "ПН-ПТ:"
+    },
+    "cardTwo": {
+      "title": "Адрес",
+      "city": "м. Харків",
+      "strit": "вул. Сумська 1"
+    },
+    "cardThree": {
+      "title": "Контакти"
+    }
+  },
+
+  "footer": {
+    "titleLeft": "Інформація",
+    "titleRight": "Контакти",
+    "formTitle": "Дізнавайся про новинки першим",
+    "formDescription": "Отримуй від нас смс із сюрпризами",
+    "formButton": "Надіслати",
+    "link_1": "Каталог",
+    "link_2": "Про нас",
+    "link_3": "Доставка та оплата",
+    "link_4": "Повернення"
+  },
+
+  "gallery": {
+    "breadcrumbs": {
+      "home": "Головнв",
+      "gallery": "Каталог"
+    },
+    "titleOne": "Фут",
+    "titleTwo": "болки",
+    "subtitle": "Будь-які розміри та форми",
+    "filterSortBy": "Сортування:",
+    "filterQuantity": "На сторінці:",
+    "sortBy": {
+      "all": "Усі товари",
+      "lessMore": "Дешевше-Дорожче",
+      "moreLess": "Дорожче-Дешевше",
+      "popular": "За популярністю",
+      "Mens": "Чоловічі",
+      "Womens": "Жіночі"
+    },
+    "quantity": {
+      "prefix": "По"
+    }
+  },
+
+  "productPage": {
+    "breadcrumbs": {
+      "home": "На головну",
+      "gallery": "Каталог"
+    },
+    "filter": {
+      "color": "Колір:",
+      "size": "Розмір:",
+      "quantity": "Кількість:"
+    },
+    "currency": "грн.",
+    "category": "Футболки",
+    "buttonBy": "КУПИТИ",
+    "subtitle": "Опис",
+    "commentsTitle": "Відгуки",
+    "commentsButton": "Залишити відгук",
+    "recomTitle": "Рекомендуємо вам:",
+
+    "commentsForm": {
+      "title": "Напишіть що Ви думаєте про нас",
+      "rating": "Оцініть продукцію*",
+      "name": "Введіть ім'я",
+      "mail": "Введіть email",
+      "comment": "Введіть коментар",
+      "buttonAdd": "Додати",
+      "buttonOut": "Вийти"
+    }
+  },
+  "cart": {
+    "breadcrumbs": {
+      "home": "На головну",
+      "gallery": "Каталог",
+      "cart": "Кошик"
+    },
+    "title": "Кошик з товаром:",
+    "empty": "У Вас немає товару в кошику.",
+    "transfer": "Перейти до покупок...",
+
+    "orderForm": {
+      "message": "ДЯКУЄМО ЗА ПОКУПКУ!",
+      "title": "Оформити замовлення",
+      "name": "Ваше ім'я*",
+      "mail": "Email*",
+      "tel": "Телефон*",
+      "city": "Місто*",
+      "warehouse": "Відділення Нової Пошти*",
+      "deliveryTitle": "Доставка",
+      "method_1": "Самовивіз",
+      "method_2": "Нова пошта",
+      "payTitle": "Розрахунок",
+      "payMethod_1": "Накладний платіж",
+      "payMethod_2": "Безготівковий",
+      "orderSum": "Замовлення",
+      "deliverySum": "Доставка",
+      "totalSum": "Разом",
+      "buttonOrder": "Оформити замовлення"
+    }
+  },
+
+  "loginPage": {
+    "title": "Вхід",
+    "linkTransfer": "У мене ще немає облікового запису",
+    "mail": "Email",
+    "password": "Введіть пароль",
+    "remember": "Запам'ятати мене",
+    "exit": "Вхід",
+    "forgot": "Забули пароль?"
+  },
+
+  "registrPage": {
+    "title": "Реєстрація",
+    "linkTransfer": "У мене є обліковий запис",
+    "tel": "Телефон",
+    "RepeatPassword": "Повторіть пароль",
+    "agree": "Я приймаю умови користування",
+    "button": "Зареєструватися"
+  },
+
+  "historyPage": {
+    "breadcrumbs": {
+      "home": "На головну",
+      "gallery": "Каталог",
+      "profile": "Кабінет"
+    },
+    "title": "Профіль",
+    "out": "Вийти",
+    "history": "Історія",
+    "favorite": "Обране",
+    "quantity": "Кількість: ",
+    "emptyHistory": "У Вас не було покупок.",
+    "emptyFavorite": "У Вас немає обраних товарів.",
+    "transferLink": "Перейти до покупок..."
+  }
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -11,8 +13,16 @@ import {
   getTotalPrice,
   getTotalData,
 } from "../../redux/slices/formOrderSlice";
+import { addHistoryItem } from "../../redux/slices/favoriteSlice";
+import Notification from "../pages/notificationPage/Notification";
 
 const CartForm = ({ purchasesData }) => {
+  const { t } = useTranslation();
+  const lg = useTranslation()[1].language; // мова перекладу en|ua
+  // Форматування нинішньої дати
+  const now = new Date();
+  const formattedDate = format(now, "dd.MM.yyyy");
+
   const inputRefName = React.useRef();
   const dispatch = useDispatch();
   const priceDelivery = 150;
@@ -30,15 +40,6 @@ const CartForm = ({ purchasesData }) => {
     passwordPattern: /^(?!.*\s).{8,}$/,
   };
 
-  // Об'єкт для оформлення заамовлення
-  const [formData, setFormData] = React.useState({
-    name: "",
-    mail: "",
-    phone: "",
-    sity: "",
-    department: "",
-  });
-
   // Стейт для виведення помилок вводу даних
   const [errors, setErrors] = React.useState({
     name: "",
@@ -51,12 +52,19 @@ const CartForm = ({ purchasesData }) => {
   const [warehouses, setWarehouses] = useState([]);
   const [warehousesPupap, setWarehousesPupap] = useState(true);
   const [curentWarehouses, setCurentWarehouses] = useState(
-    "Відділення Нової Пошти*"
+    t("cart.orderForm.warehouse")
   );
-  const [selectedWarehouse, setSelectedWarehouse] = useState("");
-  const { totalPrice, orderFormData, totalOrderData } = useSelector(
+
+  const { totalPrice, orderFormData } = useSelector(
     (state) => state.formOrderSlice
   );
+
+  // Вивести повідомлення
+  const [notificationVisible, setNotificationVisible] = useState(false);
+
+  const showNotification = () => {
+    setNotificationVisible(true);
+  };
 
   // Обробник даних форми замовлення
   const getTotalOrderData = (event) => {
@@ -78,9 +86,13 @@ const CartForm = ({ purchasesData }) => {
           name: orderFormData.name,
           phone: orderFormData.phone,
           mail: orderFormData.mail,
+          order: purchasesData,
+          date: formattedDate,
         };
 
         dispatch(getTotalData(orderData));
+        dispatch(addHistoryItem(orderData));
+        showNotification();
       }
     }
   };
@@ -123,7 +135,10 @@ const CartForm = ({ purchasesData }) => {
 
       setErrors((prevState) => ({
         ...prevState,
-        name: "Ім'я повинне бути більше 2-х символів та написане кирилицею",
+        name:
+          lg === "uk"
+            ? "Ім'я повинне бути більше 2-х символів та написане кирилицею"
+            : "The name must be more than 2 characters long and written in Cyrillic",
       }));
     } else {
       e.target.style.border = "1px solid #FFC700";
@@ -144,7 +159,10 @@ const CartForm = ({ purchasesData }) => {
 
       setErrors((prevState) => ({
         ...prevState,
-        mail: "Не вірно вказаний mail",
+        mail:
+          lg === "uk"
+            ? "Не вірно вказаний mail"
+            : "The specified email is incorrect",
       }));
     } else {
       e.target.style.border = "1px solid #FFC700";
@@ -164,7 +182,10 @@ const CartForm = ({ purchasesData }) => {
       e.target.style.border = "1px solid red";
       setErrors((prevState) => ({
         ...prevState,
-        phone: "Не вірно вказаний номер",
+        phone:
+          lg === "uk"
+            ? "Не вірно вказаний номер"
+            : "The specified number is incorrect",
       }));
     } else {
       e.target.style.border = "1px solid #FFC700";
@@ -214,65 +235,75 @@ const CartForm = ({ purchasesData }) => {
   }, [purchasesData, deliveryMethod]);
 
   return (
-    <section class="order">
-      <div class="container">
-        <h2 class="order__title cart__title">Оформити заказ</h2>
+    <section className="order">
+      <div className="container">
+        {notificationVisible && (
+          <Notification
+            message={t("cart.orderForm.message")}
+            duration={2500} // Укажите продолжительность в миллисекундах
+            onClose={() => setNotificationVisible(false)}
+          />
+        )}
 
-        <div class="order__content">
+        <h2 className="order__title cart__title">
+          {t("cart.orderForm.title")}
+        </h2>
+
+        <div className="order__content">
           <form
-            class="form order__form"
+            className="form order__form"
             action="#"
             method="post"
             name="orderName"
           >
-            <ul class="order__filds">
-              <li class="order__fild-wrapper">
-                <label class="sr-only" for="order-name">
+            <ul className="order__filds">
+              <li className="order__fild-wrapper">
+                <label className="sr-only" for="order-name">
                   Введіть Ваше ім'я
                 </label>
                 <input
                   value={orderFormData.name}
                   ref={inputRefName}
                   onChange={onChangeName}
-                  class="fild order__fild"
+                  className="fild order__fild"
                   type="text"
                   name="name"
                   id="order-name"
-                  placeholder="Ваше ім'я*"
+                  placeholder={t("cart.orderForm.name")}
                   required
                 />
                 {errors.name && <p className="form__error">{errors.name}</p>}
               </li>
 
-              <li class="order__fild-wrapper">
-                <label class="sr-only" for="order-email">
+              <li className="order__fild-wrapper">
+                <label className="sr-only" for="order-email">
                   Введіть Ваш email
                 </label>
                 <input
                   value={orderFormData.mail}
                   onChange={onChangeMail}
-                  class="fild order__fild"
+                  className="fild order__fild"
                   type="email"
                   name="email"
                   id="order-email"
-                  placeholder="Email*"
+                  placeholder={t("cart.orderForm.mail")}
                   required
                 />
                 {errors.mail && <p className="form__error">{errors.mail}</p>}
               </li>
 
-              <li class="order__fild-wrapper">
-                <label class="sr-only" for="order-tel">
+              <li className="order__fild-wrapper">
+                <label className="sr-only" for="order-tel">
                   Введіть Ваш телефон
                 </label>
                 <input
                   value={orderFormData.phone}
                   onChange={onChangePhone}
-                  class="fild order__fild"
+                  className="fild order__fild"
                   type="tel"
                   name="tel"
                   id="order-tel"
-                  placeholder="Телефон*"
+                  placeholder={t("cart.orderForm.tel")}
                   required
                 />
                 <p className="form__error">{errors.phone}</p>
@@ -280,33 +311,33 @@ const CartForm = ({ purchasesData }) => {
 
               {deliveryMethod.method !== "pickup" ? (
                 <>
-                  <li class="order__fild-wrapper">
+                  <li className="order__fild-wrapper">
+                    <label className="sr-only" for="city">
+                      Введіть місто доставки
+                    </label>
                     <input
-                      class="fild order__fild"
+                      className="fild order__fild"
                       value={city}
                       onChange={handleCityChange}
                       type="text"
                       name="city"
                       id="city"
-                      placeholder="Місто*"
+                      placeholder={t("cart.orderForm.city")}
                       required
                     />
-                    <label class="sr-only" for="city">
-                      Введіть місто доставки
-                    </label>
-                    <div class="form-msg"></div>
+                    <div className="form-msg"></div>
                   </li>
 
-                  <li class="order__fild-wrapper">
+                  <li className="order__fild-wrapper">
                     <div
                       onClick={(event) => togglePopup(event)}
-                      class="fild order__fild order__fild--delivery"
+                      className="fild order__fild order__fild--delivery"
                     >
                       {curentWarehouses}
                     </div>
 
                     {warehouses.length > 1 && warehousesPupap && (
-                      <ul class="order__departaments">
+                      <ul className="order__departaments">
                         {warehouses.map((warehouse) => (
                           <li
                             onClick={(event) => changeWarehouse(event)}
@@ -325,99 +356,112 @@ const CartForm = ({ purchasesData }) => {
               )}
             </ul>
 
-            <div class="order__culc-box">
-              <ul class="order__check-boxes">
-                <li class="order__redio-box">
-                  <h3 class="order__subtitle">Доставка</h3>
+            <div className="order__culc-box">
+              <ul className="order__check-boxes">
+                <li className="order__redio-box">
+                  <h3 className="order__subtitle">
+                    {t("cart.orderForm.deliveryTitle")}
+                  </h3>
 
                   <input
-                    class="order__redio sr-only"
+                    className="order__redio sr-only"
                     type="radio"
                     id="pickup"
                     name="delivery"
                     value="pickup"
-                    checked={deliveryMethod.method === "pickup"}
+                    checked={deliveryMethod.method === "pickup"} // true/false
                     onChange={handleDeliveryChange}
                   />
-                  <label class="order__redio-lable" for="pickup">
-                    Самовивіз
+                  <label className="order__redio-lable" for="pickup">
+                    {t("cart.orderForm.method_1")}
                   </label>
 
                   <input
-                    class="order__redio sr-only"
+                    className="order__redio sr-only"
                     type="radio"
                     id="novaPoshta"
                     name="delivery"
                     value="novaPoshta"
-                    checked={deliveryMethod.method === "novaPoshta"}
+                    checked={deliveryMethod.method === "novaPoshta"} // true/false
                     onChange={handleDeliveryChange}
                   />
-                  <label class="order__redio-lable" for="novaPoshta">
-                    Нова пошта
+                  <label className="order__redio-lable" for="novaPoshta">
+                    {t("cart.orderForm.method_2")}
                   </label>
                 </li>
 
-                <li class="order__redio-box">
-                  <h3 class="order__subtitle">Розрахунок</h3>
+                <li className="order__redio-box">
+                  <h3 className="order__subtitle">
+                    {t("cart.orderForm.payTitle")}
+                  </h3>
 
                   <input
-                    class="order__redio sr-only"
+                    className="order__redio sr-only"
                     type="radio"
                     id="cash"
                     name="payment"
                     value="cash"
                   />
-                  <label class="order__redio-lable" for="cash">
-                    Накладний платіж
+                  <label className="order__redio-lable" for="cash">
+                    {t("cart.orderForm.payMethod_1")}
                   </label>
 
                   <input
-                    class="order__redio sr-only"
+                    className="order__redio sr-only"
                     type="radio"
                     id="non-cash"
                     name="payment"
                     value="nonСash"
                     checked
                   />
-                  <label class="order__redio-lable" for="non-cash">
-                    Безготівковий
+                  <label className="order__redio-lable" for="non-cash">
+                    {t("cart.orderForm.payMethod_2")}
                   </label>
                 </li>
               </ul>
 
-              <ul class="order__parameter-list">
-                <li class="order__result-inner">
-                  Замовлення:
-                  <span class="order__result order__result--order">
+              <ul className="order__parameter-list">
+                <li className="order__result-inner">
+                  {t("cart.orderForm.orderSum")}
+                  <span className="order__result order__result--order">
                     {sumOrder}
                   </span>
-                  <span class="order__result-slice"> грн</span>
+                  <span className="order__result-slice">
+                    {" "}
+                    {t("productPage.currency")}
+                  </span>
                 </li>
 
-                <li class="order__result-inner">
-                  Доставка:
-                  <span class="order__result order__result--delivery">
+                <li className="order__result-inner">
+                  {t("cart.orderForm.deliverySum")}
+                  <span className="order__result order__result--delivery">
                     {deliveryMethod.method === "novaPoshta" ? 150 : 0}
                   </span>
-                  <span class="order__result-slice"> грн</span>
+                  <span className="order__result-slice">
+                    {" "}
+                    {t("productPage.currency")}
+                  </span>
                 </li>
               </ul>
 
-              <div class="order__pay-wraper">
-                <div class="order__pay">
-                  Разом:
-                  <span class="order__result order__result--pay">
+              <div className="order__pay-wraper">
+                <div className="order__pay">
+                  {t("cart.orderForm.totalSum")}
+                  <span className="order__result order__result--pay">
                     {sumOrder + deliveryMethod.methodPrice}
                   </span>
-                  <span class="order__result-slice"> грн</span>
+                  <span className="order__result-slice">
+                    {" "}
+                    {t("productPage.currency")}
+                  </span>
                 </div>
 
                 <button
-                  class="btn order__btn"
+                  className="btn order__btn"
                   type="submit"
                   onClick={(event) => getTotalOrderData(event)}
                 >
-                  Оформити замовлення
+                  {t("cart.orderForm.buttonOrder")}
                 </button>
               </div>
             </div>

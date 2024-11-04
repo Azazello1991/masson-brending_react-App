@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { changeName, changeMail, changePhone, changeComment } from "../../redux/slices/formCollSlice";
 
 const Form = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const inputRefName = React.useRef(); // Хук для посилання
   const collFormData = useSelector((state) => state.formCollSlice.collFormData); // дані форми
@@ -103,62 +105,62 @@ const Form = () => {
   };
 
   return (
-    <section class="section section-form">
-      <div class="container">
-        <h2 class="section-title">
-          Зв'яжіться з <span class="section-title-slice">нами</span>
+    <section className="section section-form">
+      <div className="container">
+        <h2 className="section-title">
+          {t("form.titleOne")}<span className="section-title-slice">{t("form.titleTwo")}</span>
         </h2>
-        <p class="section-text section-form__text">Це швидко та зручно</p>
+        <p className="section-text section-form__text">{t("form.subtitle")}</p>
 
-        <div class="section-form__inner">
-          <div class="section-form__data">
-            <form class="form form-page" action="#" method="post">
-              <ul class="form__list">
+        <div className="section-form__inner">
+          <div className="section-form__data">
+            <form className="form form-page" action="#" method="post">
+              <ul className="form__list">
                 
-                <li class="form__item">
-                  <label class="sr-only" for="formName">
+                <li className="form__item">
+                  <label className="sr-only" for="formName">
                     Введіть Ваше ім'я
                   </label>
                   <input
                     value={collFormData.name}
                     ref={inputRefName}
                     onChange={onChangeName}
-                    class="fild form__fild"
+                    className="fild form__fild"
                     id="formName"
                     type="text"
-                    placeholder="Ваше ім'я *"
+                    placeholder={t("form.placeholders.name")}
                     required
                   />
                   {errors.name && <p className="form__error">{errors.name}</p>}
                 </li>
 
-                <li class="form__item">
-                  <label class="sr-only" for="formMail">
+                <li className="form__item">
+                  <label className="sr-only" for="formMail">
                     Введіть Ваш email
                   </label>
                   <input
-                    class="fild form__fild"
+                    className="fild form__fild"
                     onChange={onChangeMail}
                     value={collFormData.mail}
                     id="formMail"
                     type="email"
-                    placeholder="Email *"
+                    placeholder={t("form.placeholders.mail")}
                     required
                   />
                   {errors.mail && <p className="form__error">{errors.mail}</p>}
                 </li>
 
-                <li class="form__item">
-                  <label class="sr-only" for="formTel">
+                <li className="form__item">
+                  <label className="sr-only" for="formTel">
                     Введіть Ваш телефон
                   </label>
                   <input
-                    class="fild form__fild"
+                    className="fild form__fild"
                     onChange={onChangePhone}
                     value={collFormData.phone}
                     id="formTel"
                     type="tel"
-                    placeholder="Телефон *"
+                    placeholder={t("form.placeholders.phone")}
                     required
                   />
                   {errors.phone && (
@@ -166,49 +168,49 @@ const Form = () => {
                   )}
                 </li>
 
-                <li class="form__item">
-                  <label class="sr-only" for="formComment">
+                <li className="form__item">
+                  <label className="sr-only" for="formComment">
                     Введіть Вашу примітку
                   </label>
                   <textarea
-                    class="fild form__fild form__textarea"
+                    className="fild form__fild form__textarea"
                     onChange={onChangeComment}
                     value={collFormData.comment}
                     name="comment"
                     id="formComment"
-                    placeholder="Примітка"
+                    placeholder={t("form.placeholders.comment")}
                   ></textarea>
                 </li>
               </ul>
               <div>
-                <button class="btn form__btn" type="submit">
-                  Надіслати
+                <button className="btn form__btn" type="submit">
+                  {t("form.formButton")}
                 </button>
               </div>
             </form>
 
-            <ul class="networks section-form__networks">
-              <li class="networks__btn">
+            <ul className="networks section-form__networks">
+              <li className="networks__btn">
                 <a
                   href="#"
-                  class="networks__network networks__network--telegram"
+                  className="networks__network networks__network--telegram"
                   title="Telegram"
                 ></a>
-                <span class="sr-only">Зв'язатися через телеграм</span>
+                <span className="sr-only">Зв'язатися через телеграм</span>
               </li>
 
-              <li class="networks__btn">
+              <li className="networks__btn">
                 <a
                   href="#"
-                  class="networks__network networks__network--viber"
+                  className="networks__network networks__network--viber"
                   title="Viber"
                 ></a>
-                <span class="sr-only">Зв'язатися черезз вайбер</span>
+                <span className="sr-only">Зв'язатися черезз вайбер</span>
               </li>
             </ul>
           </div>
 
-          <div class="section-form__map">
+          <div className="section-form__map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97724.28023475384!2d36.20460175560365!3d49.936343070392816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a09f63ab0f8b%3A0x2d4c18681aa4be0a!2z0KXQsNGA0YzQutC-0LIsINCl0LDRgNGM0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0Yw!5e0!3m2!1sru!2sua!4v1696703593067!5m2!1sru!2sua"
               width="535"

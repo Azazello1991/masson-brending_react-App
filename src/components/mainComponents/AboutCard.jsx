@@ -1,22 +1,24 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 // redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 
 const AboutCart = () => {
+  const { t } = useTranslation();
   const cardsServices = useSelector((state) => state.servicesSlice.content);
 
   return (
-    <ul class="about__services-list">
+    <ul className="about__services-list">
       {cardsServices.map((card, i) => {
         return (
-          <li className="about__servic">
+          <li className="about__servic" key={i}>
             <a className="about__inner" href="#">
-              <h3 className="about__subtitle tr">{card.title}</h3>
+              <h3 className="about__subtitle tr">{t(card.title)}</h3>
               <p className="about__description tr">
-                {card.subtitle}
+                {t(card.subtitle)}
               </p>
               <a className="about__link tr" href="#">
-                Детальніше
+                {t("about.cards.button")}
               </a>
               <div className="about__picture">
                 <img className="about__img" src={card.url} width="133" height="133" alt="принтер" />

@@ -1,36 +1,39 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 const Contacts = () => {
+  const { t } = useTranslation();
+  
   return (
-    <section class="section contacts" id="contacts">
-        <div class="container">
-          <h2 class="sr-only">Графік та контакти</h2>
-          <ul class="contacts__wrapper">
-            <li class="contacts__card">
-              <div class="contacts__picture contacts__picture--days"></div>
-              <h3 class="contacts__subtitle">Графік</h3>
-              <time class="contacts__time">
-                <span class="contacts__days">ПН-ПТ:</span>
+    <section className="section contacts" id="contacts">
+        <div className="container">
+          <h2 className="sr-only">Контакти</h2>
+          <ul className="contacts__wrapper">
+            <li className="contacts__card">
+              <div className="contacts__picture contacts__picture--days"></div>
+              <h3 className="contacts__subtitle">{t("contacts.cardOne.title")}</h3>
+              <time className="contacts__time">
+                <span className="contacts__days">{t("contacts.cardOne.days")}</span>
                 <span>9:00</span> - <span>18:00</span>
               </time>
             </li>
 
-            <li class="contacts__card">
-              <div class="contacts__picture contacts__picture--address"></div>
-              <h3 class="contacts__subtitle">Адрес</h3>
-              <address class="contacts__address">
-                <span class="contacts__sity">м. Харків</span>
-                <span>вул. Сумська 1</span>
+            <li className="contacts__card">
+              <div className="contacts__picture contacts__picture--address"></div>
+              <h3 className="contacts__subtitle">{t("contacts.cardTwo.title")}</h3>
+              <address className="contacts__address">
+                <span className="contacts__sity">{t("contacts.cardTwo.city")}</span>
+                <span>{t("contacts.cardTwo.strit")}</span>
               </address>
             </li>
 
-            <li class="contacts__card">
-              <div class="contacts__picture contacts__picture--contacts"></div>
-              <h3 class="contacts__subtitle">Контакти</h3>
-              <a class="contacts__data" href="tel:+380999999999">
+            <li className="contacts__card">
+              <div className="contacts__picture contacts__picture--contacts"></div>
+              <h3 className="contacts__subtitle">{t("contacts.cardThree.title")}</h3>
+              <a className="contacts__data" href="tel:+380999999999">
                 +38(099)-999-99-99
               </a>
-              <a class="contacts__data" href="mailto:gmailexamp@gmail.com">
+              <a className="contacts__data" href="mailto:gmailexamp@gmail.com">
                 gmailexamp@gmail.com
               </a>
             </li>

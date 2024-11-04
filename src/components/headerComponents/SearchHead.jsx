@@ -1,11 +1,13 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { sortByData, updateSearchValue } from "../../redux/slices/filterSlice";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const SearchHead = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -63,17 +65,17 @@ const SearchHead = () => {
   };
 
   return (
-    <div class="container-btn">
-      <div class="search-container">
+    <div className="container-btn">
+      <div className="search-container">
         <input
           ref={searchRef}
           onChange={(event)=>onChangeInpute(event)}
           type="text"
-          placeholder="Пошук"
+          placeholder={t("search")}
           value={searchValue}
         ></input>
-        <a class="button-circle">
-          <i class="fa fa-search"></i>
+        <a className="button-circle">
+          <i className="fa fa-search"></i>
         </a>
       </div>
     </div>

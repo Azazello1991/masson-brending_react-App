@@ -1,5 +1,4 @@
 .sale {
-
   &__title {
     font-size: 48px;
     @extend %montserrat-600;
@@ -38,9 +37,6 @@
     }
   }
 
-  &__swiper-arrows {
-  }
-
   &__arrow--prev {
     &::after {
       background-image: url("../../images/sprite.svg#icon-arrow-right");
@@ -70,4 +66,3 @@
     }
   }
 }
-

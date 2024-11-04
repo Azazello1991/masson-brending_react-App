@@ -20,10 +20,11 @@ const initialState = {
 };
 
 export const filterSlice = createSlice({
-  name: "filterr",
+  name: "filter",
   initialState: initialState,
   reducers: {
     sortByData(state, action) {
+      console.log(action.payload.obj)
       state.params.sortBy = action.payload.obj;
     },
 
@@ -58,6 +59,12 @@ export const filterSlice = createSlice({
     setChangeProductQuantity(state, action) {
       state.params.productQuantity = action.payload;
     },
+
+    setTranslations(state, action) {
+      state.params.sortBy.name = action.payload.name;
+      state.params.quantity.name = action.payload.quantity;
+    },
+    
   },
 });
 
@@ -73,6 +80,7 @@ export const {
   setProductQuantityMore,
   setProductQuantityLess,
   setChangeProductQuantity,
+  setTranslations
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

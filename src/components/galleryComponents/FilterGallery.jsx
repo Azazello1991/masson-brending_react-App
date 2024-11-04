@@ -1,52 +1,69 @@
 import React from "react";
 import { useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
-import { sortByQuantity, sortByData } from "../../redux/slices/filterSlice";
-
-const sortBy = [
-  {
-    name: "Усі товари",
-    "": "",
-  },
-  {
-    name: "Дешевше - Дорожче",
-    price: "-price",
-  },
-  {
-    name: "Дорожче - Дешевше",
-    price: "price",
-  },
-  {
-    name: "По популярності",
-    rating: "rating",
-  },
-  {
-    name: "Чоловічі",
-    gender: "male1",
-  },
-  {
-    name: "Жіночі",
-    gender: "female",
-  },
-];
-
-const quantity = [
-  { name: "По 16", quantity: 16 },
-  { name: "По 8", quantity: 8 },
-  { name: "По 4", quantity: 4 },
-];
+import {
+  sortByQuantity,
+  setTranslations,
+  sortByData
+} from "../../redux/slices/filterSlice";
 
 const FilterGallery = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const sortName = useSelector((state) => state.filterSlice.params.sortBy.name);
+  const sortByDataState = useSelector((state) => state.filterSlice.params.sortBy);
   const sortQuantity = useSelector(
     (state) => state.filterSlice.params.quantity.name
   );
+
+  const sortBy = [
+    {
+      name: t("gallery.sortBy.all"),
+      "": "",
+    },
+    {
+      name: t("gallery.sortBy.lessMore"),
+      price: "-price",
+    },
+    {
+      name: t("gallery.sortBy.moreLess"),
+      price: "price",
+    },
+    {
+      name: t("gallery.sortBy.popular"),
+      rating: "rating",
+    },
+    {
+      name: t("gallery.sortBy.Mens"),
+      gender: "male1",
+    },
+    {
+      name: t("gallery.sortBy.Womens"),
+      gender: "female",
+    },
+  ];
+
+  const quantity = [
+    { name: `${t("gallery.quantity.prefix")} 16`, quantity: 16 },
+    { name: `${t("gallery.quantity.prefix")} 8`, quantity: 8 },
+    { name: `${t("gallery.quantity.prefix")} 4`, quantity: 4 },
+  ];
+
   // закриття фільтру кліком поза ним
   const sortRef = useRef(null);
   const quantityRef = useRef(null);
   const [openPopupSort, setOpenPopupSort] = React.useState(false);
   const [openPopupQuantity, setOpenPopupQuantity] = React.useState(false);
+
+  // Перекладаємо на актуальну мову початковій стейт:
+  useEffect(() => {
+    dispatch(
+      setTranslations({
+        name: t("gallery.sortBy.all"),
+        quantity: t("gallery.quantity.prefix") + " 16",
+      })
+    );
+  }, [t, dispatch]);
 
   // функція що закрива фільтри
   const handleClose = () => {
@@ -61,14 +78,14 @@ const FilterGallery = () => {
         !sortRef.current.contains(event.target) &&
         !quantityRef.current.contains(event.target)
       ) {
-        handleClose(); // Закрываем модальное окно, если клик был вне него
+        handleClose(); // Закриваєм модальне вікно, якщо клік був поза ним
       }
     };
 
-    // Добавляем обработчик события клика
+    // Додаєм обробник клика
     document.addEventListener("click", handleClickOutside);
 
-    // Убираем обработчик при размонтировании компонента
+    // Видаляєм обробник при размонтуванні компонента
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -87,22 +104,22 @@ const FilterGallery = () => {
   };
 
   return (
-    <ul class="filter catalog-page__filter">
-      <li class="filter__item">
-        <span class="filter__subtitle">Сортування:</span>
-        <div class="filter__inner">
-          <h3 class="sr-only">Сортування по категоріям</h3>
+    <ul className="filter catalog-page__filter">
+      <li className="filter__item">
+        <span className="filter__subtitle">{t("gallery.filterSortBy")}</span>
+        <div className="filter__inner">
+          <h3 className="sr-only">Сортування по категоріям</h3>
 
           <button
             ref={sortRef}
             onClick={() => setOpenPopupSort(!openPopupSort)}
-            class={openPopupSort ? "filter__result active" : "filter__result"}
+            className={openPopupSort ? "filter__result active" : "filter__result"}
             type="button"
           >
-            {sortName}
+            {sortByDataState.name}
           </button>
           <ul
-            class={
+            className={
               openPopupSort ? "filter__parameters" : "filter__parameters hidden"
             }
           >
@@ -110,7 +127,7 @@ const FilterGallery = () => {
               return (
                 <li
                   onClick={() => openSortListSelected(obj)}
-                  class="filter__parameter js-parameter"
+                  className="filter__parameter js-parameter"
                   key={i}
                 >
                   {obj.name}
@@ -121,15 +138,15 @@ const FilterGallery = () => {
         </div>
       </li>
 
-      <li class="filter__item">
-        <span class="filter__subtitle">На сторінці:</span>
-        <div class="filter__inner">
-          <h3 class="sr-only">Сортувати за кількістю на сторінці</h3>
+      <li className="filter__item">
+        <span className="filter__subtitle">{t("gallery.filterQuantity")}</span>
+        <div className="filter__inner">
+          <h3 className="sr-only">Сортувати за кількістю на сторінці</h3>
 
           <button
             ref={quantityRef}
             onClick={() => setOpenPopupQuantity(!openPopupQuantity)}
-            class={
+            className={
               openPopupQuantity ? "filter__result active" : "filter__result"
             }
             type="button"
@@ -137,7 +154,7 @@ const FilterGallery = () => {
             {sortQuantity}
           </button>
           <ul
-            class={
+            className={
               openPopupQuantity
                 ? "filter__parameters"
                 : "filter__parameters hidden"
@@ -147,7 +164,7 @@ const FilterGallery = () => {
               return (
                 <li
                   onClick={() => openQuantityListSelected(obj)}
-                  class="filter__parameter js-parameter"
+                  className="filter__parameter js-parameter"
                   key={i}
                 >
                   {obj.name}

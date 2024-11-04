@@ -1,24 +1,27 @@
 .card {
   max-width: 280px;
-  padding: 10px;
+  min-height: 100%;
+  height: max-content;
+  padding: 7px;
   background-color: #101010;
   border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1, 1.1);
+    border-radius: 20px;
+    box-shadow: inset 0px 0px 20px 0px $accent;
+  }
+
+  &:hover > .card__title {
+    color: $accent;
+  }
 
   &__wrapper {
     display: flex;
+    min-height: 100%;
     align-items: center;
     flex-direction: column;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.1, 1.1);
-      border-radius: 20px;
-      box-shadow: inset 0px 0px 20px 0px $accent;
-    }
-
-    &:hover > .card__title {
-      color: $accent;
-    }
   }
 
   &__img {

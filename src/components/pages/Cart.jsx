@@ -2,8 +2,7 @@ import React from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 import CartForm from "../cartComponents/CartForm";
-import { useEffect, useState } from "react";
-// redux
+import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -17,6 +16,8 @@ import BreadCrumbsCart from "../cartComponents/BreadCrumbsCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const lg = useTranslation()[1].language;
 
   // Объекти для управління відкриття попапів
   const [openPopupSize, setOpenPopupSize] = React.useState({});
@@ -72,7 +73,7 @@ const Cart = () => {
         <section className="cart">
           <BreadCrumbsCart />
           <div className="container">
-            <h1 className="cart__title">Кошик з товаром:</h1>
+            <h1 className="cart__title">{t("cart.title")}</h1>
 
             <ul className="cart__products-list">
               {purchases && purchases.length > 0 ? (
@@ -94,8 +95,12 @@ const Cart = () => {
                       </div>
 
                       <div className="cart__text">
-                        <a className="cart__subtitle">{product.name}</a>
-                        <span className="cart__group">{"Футболки"}</span>
+                        <a className="cart__subtitle">
+                          {lg === "en" ? product.name.en : product.name.ua}
+                        </a>
+                        <span className="cart__group">
+                          {t("productPage.category")}
+                        </span>
                       </div>
                     </div>
 
@@ -210,7 +215,9 @@ const Cart = () => {
                     <div className="cart__price-wrapper">
                       <span className="cart__price">
                         {product.price * product.quantity}
-                        <span className="cart__currency">{" грн"}</span>
+                        <span className="cart__currency">
+                          {" " + t("productPage.currency")}
+                        </span>
                       </span>
                       <button
                         onClick={() =>
@@ -220,7 +227,7 @@ const Cart = () => {
                             color: product.color,
                           })
                         }
-                        className="cart__delete"
+                        className="cart__delete delete"
                         type="button"
                       ></button>
                     </div>
@@ -228,9 +235,9 @@ const Cart = () => {
                 ))
               ) : (
                 <div className="cart__message-text">
-                  У Вас немає товару в кошику.
+                  {t("cart.empty")}
                   <Link to={"/gallery"} className="cart__message-transfer">
-                    Перейти до покупок...
+                    {t("cart.transfer")}..
                   </Link>
                 </div>
               )}

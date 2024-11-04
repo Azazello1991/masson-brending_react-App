@@ -26,13 +26,13 @@ const Header = () => {
 
   return (
     <header className={isSticky ? "header sticky" : "header"}>
-      <div class="container">
-        <div class="header__top">
+      <div className="container">
+        <div className="header__top">
           <SearchHead />
 
-          <Link to="/" class="logo">
+          <Link to="/" className="logo">
             <img
-              class="logo__icon"
+              className="logo__icon"
               src={Logo}
               width="184"
               height="63"
@@ -42,9 +42,9 @@ const Header = () => {
 
           <Cabinet />
 
-          {/*  <button class="burger burger-index--open" type="button">
-              <span class="burger__line"></span>
-              <span class="sr-only tr">Відкрити меню</span>
+          {/*  <button className="burger burger-index--open" type="button">
+              <span className="burger__line"></span>
+              <span className="sr-only tr">Відкрити меню</span>
             </button> */}
         </div>
 

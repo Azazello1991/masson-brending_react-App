@@ -1,0 +1,71 @@
+@import "../../../../scss/_vars.scss";
+.product {
+  @extend %montserrat-400 !optional;
+  position: relative;
+  
+
+  &__link {
+    display: flex;
+    column-gap: 20px;
+    padding: 5px;
+    border: solid 1px transparent;
+    border-bottom: 1px solid $accent;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      border: solid 1px $accent;
+      background-color: rgba(205, 133, 63, 0.2);
+    }
+  }
+
+  &__photo {
+    min-width: 150px;
+    height: 150px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__quantity {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #b5b5b5;
+  }
+
+  &__number {
+    color: $accent;
+  }
+
+  &__time {
+    display: block;
+    font-size: 16px;
+  }
+
+  &__name {
+    @extend %montserrat-400 !optional;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    color: #b5b5b5;
+    margin-bottom: 5px;
+  }
+
+  &__price {
+    font-weight: 700;
+    color: $accent;
+    font-size: 24px;
+  }
+
+  &__delete {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    opacity: 1;
+  }
+}

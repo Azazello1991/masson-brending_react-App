@@ -47,14 +47,15 @@
   &__item {
     display: flex;
     flex-direction: column;
+    max-width: 454px;
+    width: 100%;
   }
 
 
   &__fild {
     transform: skew(-10deg);
     background-color: #111111;
-    padding: 30px 40px;
-    max-width: 454px;
+    padding: 20px 30px;
     font-size: 16px;
     line-height: 1.5;
 
@@ -70,11 +71,9 @@
   }
 
   &__textarea {
-    max-width: 454px;
-    width: 100%;
     resize: vertical;
     margin-bottom: 50px;
-    min-height: 200px;
+    min-height: 66px;
   }
 
   &__btn {

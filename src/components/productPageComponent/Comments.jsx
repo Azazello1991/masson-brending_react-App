@@ -5,18 +5,17 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Comments = () => {
   const { comments } = useSelector((state) => state.commentsProductSlice);
-  const dispatch = useDispatch();
 
   return (
-    <section class="comments product__comments">
-      <div class="container">
-        <ul class="comments__list">
+    <section className="comments product__comments">
+      <div className="container">
+        <ul className="comments__list">
           {comments.map((comment, i) => (
             
-            <li key={comment.id ? comment.id + i : i} class="comments__item">
-              <div class="comments__photo">
+            <li key={comment.id ? comment.id + i : i} className="comments__item">
+              <div className="comments__photo">
                 <img
-                  class="comments__img"
+                  className="comments__img"
                   width="80"
                   height="80"
                   src={comment.photo ? comment.photo : "https://img.freepik.com/free-photo/skeleton-in-studio_23-2150891676.jpg"}
@@ -24,8 +23,8 @@ const Comments = () => {
                 />
               <time className="comments__time">{ comment.time }</time>
               </div>
-              <div class="comments__inner">
-                <figcaption class="comments__autor">{comment.name}</figcaption>
+              <div className="comments__inner">
+                <figcaption className="comments__autor">{comment.name}</figcaption>
 
                 <StarRatings
                   rating={comment.rating}
@@ -37,7 +36,7 @@ const Comments = () => {
                   name="rating" // ім'я рейтинга (необов'язково)
                 />
 
-                <blockquote class="comments__comment">
+                <blockquote className="comments__comment">
                   {comment.text}
                 </blockquote>
               </div>

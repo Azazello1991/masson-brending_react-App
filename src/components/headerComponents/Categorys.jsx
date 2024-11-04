@@ -1,28 +1,49 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { addId } from "../../redux/slices/navSlice";
 
 const Categorys = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const activId = useSelector((state) => state.navSlice.index);
-  const categorys = useSelector((state) => state.navSlice.categorys);
+  const { activId, categorys } = useSelector((state) => state.navSlice);
+  const navigate = useNavigate();
+
+  const handleLinkClick = (section) => {
+    // Переход на главную страницу
+    navigate("/"); // Переход на главную страницу
+
+    // Затримка для переходу на іншу сторінку
+    setTimeout(() => {
+      const element = document.getElementById(section.replace("#", ""));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
+  };
 
   return (
-    <nav class="nav">
-      <ul class="nav__list">
-        {categorys.map((nameCategory, i) => {
+    <nav className="nav">
+      <ul className="nav__list">
+        {categorys.map((category, i) => {
           return (
-            <li key={nameCategory.id} class="nav__category-item">
-              <a
+            <li key={category.id} className="nav__category-item">
+              <Link
                 className={
                   activId === i ? "nav__category active" : "nav__category"
                 }
-                onClick={() => dispatch(addId(i))}
-                href={nameCategory.section}
+                onClick={() => {
+                  dispatch(addId(i));
+                  handleLinkClick(category.section); // Передаем только секцию
+                }}
+                to="/"
               >
-                <span class="nav__category-name tr">{nameCategory.name}</span>
-              </a>
+                <span className="nav__category-name tr">
+                  {t(category.nameKey)}
+                </span>
+              </Link>
             </li>
           );
         })}

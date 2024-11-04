@@ -1,41 +1,77 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 
 const Cabinet = () => {
+  const { historyItems, favoriteItems } = useSelector(
+    (state) => state.favoriteSlice
+  );
+  const render = historyItems.length > 0 || favoriteItems.length > 0;
+  const [lg, setLg] = React.useState(localStorage["i18nextLng"]);
   const { purchases } = useSelector((state) => state.cartSlice);
+  // Багатомовний переклад
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setLg(lng); // Метод для зміни мови
+  };
 
   return (
-    <div class="header__nav-top">
-      <div class="header__languages">
-        <button class="header__language-btn active" data-lg="en" type="button">
+    <div className="header__nav-top">
+      <div className="header__languages">
+        <button
+          className={
+            lg === "en" ? "header__language-btn active" : "header__language-btn"
+          }
+          value={"en"}
+          onClick={(event) => changeLanguage(event.target.value)}
+          type="button"
+        >
           EN
         </button>
-        <button class="header__language-btn" data-lg="ua" type="button">
+        <button
+          className={
+            lg === "uk" ? "header__language-btn active" : "header__language-btn"
+          }
+          value={"uk"}
+          onClick={(event) => changeLanguage(event.target.value)}
+          type="button"
+        >
           UA
         </button>
       </div>
-      <div class="header__cabinet">
-        <Link to={'/cart'}
-          class="btn-icon header__cabinet-btn header__cart-btn"
+
+      <div className="header__cabinet">
+        <Link
+          to={"/cart"}
+          className="btn-icon header__cabinet-btn header__cart-btn"
           title="Кошик"
           aria-label="Кошик"
         >
-          <span class="header__quantity" aria-label="Килькисть товару в кошику">
+          <span className="header__quantity" aria-label="Килькисть товару в кошику">
             {purchases.length}
           </span>
         </Link>
-        <a
-          href="#"
-          class="btn-icon header__cabinet-btn header__lickes-btn"
+        <Link
+          to={"/history-page"}
+          className="btn-icon header__cabinet-btn header__lickes-btn"
           type="button"
           title="Обране"
           aria-label="Обране"
-        ></a>
+        >
+          {render && (
+            <span
+              className="header__quantity"
+              aria-label="історія в кабінеті"
+            ></span>
+          )}
+        </Link>
         <Link
           to="/logIn"
-          class="header__log-in"
+          className="header__log-in"
           type="button"
           title="Реєстрація"
           aria-label="Реєстрація"

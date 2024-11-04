@@ -1,0 +1,68 @@
+@import "../../../scss/vars.scss";
+
+.profile {
+  padding-top: 255px;
+  margin-bottom: 150px;
+
+  &__title {
+    @extend %montserrat-600 !optional;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  &__link_exit {
+    display: block;
+    @extend %montserratAlternates-400 !optional;
+    font-size: 24px;
+    color: #a7a7a7;
+    text-align: center;
+    border-bottom: solid 1px transparent;
+    width: fit-content;
+    margin: 0 auto 50px;
+    transition: all 0.3 ease-in-out;
+
+    &:hover {
+      color: $accent;
+      border-bottom: solid 1px $accent;
+    }
+    
+    &:active {
+      color: $accent;
+      border-bottom: solid 1px $accent;
+    }
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 50px;
+  }
+}
+
+.history,
+.favorites {
+  max-width: calc((100% - 20px) / 2)
+}
+
+.history__title,
+.favorites__title {
+  @extend %montserratAlternates-500 !optional;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  padding: 17px 70px;
+  color: $accent;
+  font-size: 24px;
+  background-color: #111111;
+  transform: skewX(-10deg);
+  margin-bottom: 50px;
+}
+
+.history__list,
+.favorites__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}

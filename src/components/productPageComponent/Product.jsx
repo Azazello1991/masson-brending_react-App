@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import FilterProduct from "./FilterProduct";
 import BreadCrumbs from "./BreadCrumbs";
 import StarRatings from "react-star-ratings";
@@ -17,10 +18,13 @@ import {
   setProductColor,
   setProductSize,
 } from "../../redux/slices/filterSlice";
-
-
+import {
+  addFavoriteItem,
+} from "../../redux/slices/favoriteSlice";
 
 const Product = ({ product }) => {
+  const { t } = useTranslation();
+  const lg = useTranslation()[1].language;
   const [openFormComment, setOpenFormComment] = React.useState(false);
   const dispatch = useDispatch();
   const { productQuantity, productSize, productColor } = useSelector(
@@ -30,10 +34,20 @@ const Product = ({ product }) => {
   if (!productSize) {
     dispatch(setProductSize(product.sizes[0].toUpperCase()));
   }
+
   if (!productColor) {
     dispatch(setProductColor(product.color[0]));
   }
 
+  // Додаємо продукт в обране
+  const handlerClickFavorite = (e) => {
+    dispatch(addFavoriteItem(product));
+  };
+
+  const curentTitle = lg === "en" ? product.title.en : product.title.ua;
+  const curentDescription = lg === "en" ? product.description.en : product.description.ua;
+
+  // Формуємо об'єкт для покупки
   const buy = () => {
     const buyObj = {
       name: product.title,
@@ -49,15 +63,16 @@ const Product = ({ product }) => {
       },
     };
     dispatch(addPurchases(buyObj));
+    /* dispatch(addHistoryItem(buyObj)); */
   };
 
   return (
-    <section class="product">
-      <div class="container product__container">
-        <h1 class="sr-only">Опис продукту</h1>
-        <BreadCrumbs title={product.title} />
+    <section className="product">
+      <div className="container product__container">
+        <h1 className="sr-only">Опис продукту</h1>
+        <BreadCrumbs title={curentTitle} />
 
-        <div class="product__inner">
+        <div className="product__inner">
           <Swiper
             modules={[Navigation, Pagination, Zoom]}
             spaceBetween={50}
@@ -82,7 +97,7 @@ const Product = ({ product }) => {
             ))}
           </Swiper>
 
-          <div class="product__description">
+          <div className="product__description">
             <StarRatings
               rating={product.rating}
               starRatedColor="gold" // колір заповнених зірок
@@ -92,55 +107,66 @@ const Product = ({ product }) => {
               numberOfStars={5} // кількість
               name="rating" // ім'я рейтинга (необов'язково)
             />
-            <h2 class="product__title">{product.title}</h2>
-            <span class="product__subtitle">Футболки</span>
+            <h2 className="product__title">{curentTitle}</h2>
+            <span className="product__subtitle">
+              {t("productPage.category")}
+            </span>
 
-            <div class="stars static-stars product__stars" data-stars="4"></div>
+            <div
+              className="stars static-stars product__stars"
+              data-stars="4"
+            ></div>
 
-            <div class="product__price-box">
-              <span class="product__price">{product.price} </span>
-              <span class="product__currency">грн.</span>
+            <div className="product__price-box">
+              <span className="product__price">{product.price} </span>
+              <span className="product__currency">{t('productPage.currency') }</span>
             </div>
 
             <FilterProduct {...product} />
 
-            <div class="product__buy-wrapper">
-              <button onClick={() => buy()} class="btn product__btn-buy">
-                КУПИТИ
+            <div className="product__buy-wrapper">
+              <button onClick={() => buy()} className="btn product__btn-buy">
+                {t("productPage.buttonBy")}
               </button>
 
               <div>
-                <span class="sr-only">Кнопка "додати в обране"</span>
+                <span className="sr-only">Кнопка "додати в обране"</span>
                 <input
-                  class="product__checkbox sr-only"
+                  className="product__checkbox sr-only"
+                  onClick={(event) => handlerClickFavorite(event)}
                   type="checkbox"
                   id="like"
                   name="like"
                   title="Додати в обране"
                 />
-                <label class="product__label-like" for="like"></label>
+                <label className="product__label-like" for="like"></label>
               </div>
             </div>
           </div>
         </div>
 
-        <h2 class="product__title-description">Опис</h2>
+        <h2 className="product__title-description">{t('productPage.subtitle') }</h2>
 
-        <div class="product__about">
-          <p>{product.description}</p>
+        <div className="product__about">
+          <p>{curentDescription}</p>
         </div>
 
-        <div class="product__add-comments">
-          <h2 class="product__title-comments">Відгуки</h2>
+        <div className="product__add-comments">
+          <h2 className="product__title-comments">{t('productPage.commentsTitle') }</h2>
           <button
-            class="btn product__btn-add"
+            className="btn product__btn-add"
             onClick={() => setOpenFormComment(!openFormComment)}
             type="button"
           >
-            Залишити відгук
+            {t('productPage.commentsButton') }
           </button>
         </div>
-        {openFormComment && <CommentForm openFormComment={openFormComment} setOpenFormComment={setOpenFormComment} />}
+        {openFormComment && (
+          <CommentForm
+            openFormComment={openFormComment}
+            setOpenFormComment={setOpenFormComment}
+          />
+        )}
       </div>
     </section>
   );

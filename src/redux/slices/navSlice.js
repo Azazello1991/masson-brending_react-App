@@ -1,52 +1,53 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  index: 0,
+  activId:0,
   categorys: [
     {
-      name: "Послуги",
+      nameKey: "category.services", // используем ключ для перевода
       id: 1,
       section: '#about',
     },
     {
-      name: "Приклад",
+      nameKey: "category.example",
       id: 2,
       section: '#example',
     },
     {
-      name: "Топ",
+      nameKey: "category.top",
       id: 3,
       section: '#top',
     },
     {
-      name: "Каталог",
+      nameKey: "category.catalog",
       id: 4,
       section: '#catalog',
     },
     {
-      name: "Відгуки",
+      nameKey: "category.comments",
       id: 5,
       section: '#comments',
     },
     {
-      name: "Про нас",
+      nameKey: "category.aboutUs",
       id: 6,
       section: '#video',
     },
     {
-      name: "Контакти",
+      nameKey: "category.contacts",
       id: 7,
       section: '#contacts',
     },
   ],
 };
 
+
 export const navSlice = createSlice({
   name: "nav",
   initialState: initialState,
   reducers: {
     addId(state, action) {
-      state.index = action.payload
+      state.activId = action.payload
     },
   },
 });

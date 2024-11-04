@@ -9,38 +9,38 @@ import servicePhoto5 from '../../images/services/banner.webp'
 const initialState = {
   content: [
     {
-      title: "Друк флекс/флок плівкою",
-      subtitle: "Якісний друк при малих тиражах.",
+      title: "about.cards.card_1.title",
+      subtitle: "about.cards.card_2.description",
       url: servicePhoto,
       key: 1,
     },
     {
-      title: "Друк на Ваших матеріалах",
-      subtitle: "Допомога з матеріалами.",
+      title: "about.cards.card_2.title",
+      subtitle: "about.cards.card_2.description",
       url:  servicePhoto1 ,
       key: 2,
     },
     {
-      title: "Друк на кераміці",
-      subtitle: "Зробимо стильною вашу чашку.",
+      title: "about.cards.card_3.title",
+      subtitle: "about.cards.card_3.description",
       url: servicePhoto2 ,
       key: 3,
     },
     {
-      title: "Реставрація зображень",
-      subtitle: "Професійна цифрова реставрація.",
+      title: "about.cards.card_4.title",
+      subtitle: "about.cards.card_4.description",
       url: servicePhoto3,
       key: 4,
     },
     {
-      title: "Ламінація Ваших речей",
-      subtitle: "Дамо часу улюбленим речам.",
+      title: "about.cards.card_5.title",
+      subtitle: "about.cards.card_5.description",
       url: servicePhoto4,
       key: 5,
     },
     {
-      title: "Друк банерів",
-      subtitle: "Зроби подарунок на всю стіну!",
+      title: "about.cards.card_6.title",
+      subtitle: "about.cards.card_6.description",
       url: servicePhoto5,
       key: 6,
     },
@@ -55,7 +55,7 @@ export const servicesSlice = createSlice({
   },
 });
 
-export const selectSearch = (state) => state.content; // useSelector
+export const selectServices = (state) => state.content; // useSelector
 
 export const { addServices } = servicesSlice.actions; // functions
 

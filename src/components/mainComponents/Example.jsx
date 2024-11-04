@@ -1,17 +1,20 @@
 import React from "react";
 import SwiperExample from "../mainComponents/SwiperExample";
+import { useTranslation } from 'react-i18next';
 
 const Example = () => {
+  const { t } = useTranslation();
+  
   return (
-    <section class="section example" id="example">
-      <div class="container">
-        <h2 class="example__title">
-          <span class="section-title-slice example__title-slice tr">
-            Приклад{" "}
+    <section className="section example" id="example">
+      <div className="container">
+        <h2 className="example__title">
+          <span className="section-title-slice example__title-slice tr">
+            {t("example.titleOne")}
           </span>
-          <span class="tr">друку</span>
+          <span className="tr">{t("example.titleTwo")}</span>
         </h2>
-        <span class="example__text tr">Це може бути на тобі</span>
+        <span className="example__text tr">{t("example.subtitle")}</span>
         <SwiperExample/>
       </div>
     </section>

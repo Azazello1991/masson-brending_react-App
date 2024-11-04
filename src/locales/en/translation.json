@@ -1,0 +1,301 @@
+{
+  "search": "Search",
+  "category": {
+    "services": "Services",
+    "example": "Example",
+    "top": "Top",
+    "catalog": "Catalog",
+    "comments": "Comments",
+    "aboutUs": "About Us",
+    "contacts": "Contacts"
+  },
+
+  "hero": {
+    "subtitle": "High-quality printing, branding of clothes and accessories",
+    "buttonCatalog": "CATALOG"
+  },
+
+  "about": {
+    "titleOne": "Our ",
+    "titleTwo": "services",
+    "subtitle": "Main activity of Masonry",
+
+    "cards": {
+      "button": "More detail",
+      "card_1": {
+        "title": "Flex/Flock Film Printing",
+        "description": "High-quality printing for small runs."
+      },
+      "card_2": {
+        "title": "Printing on Your Materials",
+        "description": "Assistance with materials."
+      },
+      "card_3": {
+        "title": "Ceramic Printing",
+        "description": "We'll make your cup stylish."
+      },
+      "card_4": {
+        "title": "Image Restoration",
+        "description": "Professional digital restoration."
+      },
+      "card_5": {
+        "title": "Laminating Your Items",
+        "description": "Extend the life of your favorite items."
+      },
+      "card_6": {
+        "title": "Banner Printing",
+        "description": "Make a gift that covers the entire wall!"
+      }
+    }
+  },
+
+  "example": {
+    "titleOne": "Print ",
+    "titleTwo": "Example",
+    "subtitle": "This could be on you"
+  },
+
+  "sale": {
+    "titleOne": "Sales ",
+    "titleTwo": "and offers",
+    "subtitle": "Grab it before it's gone",
+    "slider": {
+      "title": "Русский корабль...",
+      "description": "Buy a T-shirt and get 10% off your skin purchases for AU consumption, buy a stylish T-shirt and support your brother at the front",
+      "button": "DETAILS",
+      "altPhoto": "photo"
+    }
+  },
+
+  "top": {
+    "titleOne": "Top ",
+    "titleTwo": "Sales",
+    "subtitle": "What you'll love",
+    "category": {
+      "all": "All",
+      "lamination": "Lamination",
+      "clothing": "Clothing",
+      "mugs": "Mugs",
+      "print": "Print",
+      "banners": "Banners",
+      "photo": "Photo"
+    },
+
+    "mixCarts": {
+      "title_0": "T-shirt 'Home'",
+      "description_0": "Eco materials",
+      "title_1": "Mug",
+      "description_1": "Eco materials",
+      "title_2": "Yellow T-shirt",
+      "description_2": "Eco materials",
+      "title_3": "Photo Fun",
+      "description_3": "Eco materials",
+      "title_4": "Banner 2x2 meters",
+      "description_4": "Eco materials",
+      "title_5": "Menu",
+      "description_5": "Eco materials",
+      "title_6": "Discounts",
+      "description_6": "Eco materials",
+      "title_7": "Mug",
+      "description_7": "Eco materials"
+    }
+  },
+
+  "catalog": {
+    "titleOne": "Cata",
+    "titleTwo": "log",
+    "subtitle": "Choose everything you like",
+
+    "catalogCards": {
+      "title_0": "Men's T-shirt",
+      "description_0": "Eco materials",
+      "title_1": "Women's T-shirt",
+      "description_1": "Eco materials",
+      "title_2": "Hoodie",
+      "description_2": "Eco materials",
+      "title_3": "Meme Mugs",
+      "description_3": "Eco materials",
+      "title_4": "Backpacks",
+      "description_4": "Eco materials",
+      "title_5": "Bags",
+      "description_5": "Eco materials",
+      "title_6": "Sweatshirts",
+      "description_6": "Eco materials",
+      "title_7": "Men's Vests",
+      "description_7": "Eco materials",
+      "title_8": "Women's Vests",
+      "description_8": "Eco materials"
+    }
+  },
+
+  "comments": {
+    "titleOne": "Re",
+    "titleTwo": "vie",
+    "titleThree": "wss",
+    "subtitle": "Just see what your neighbor says about us"
+  },
+
+  "video": {
+    "titleOne": "Still have ",
+    "titleTwo": "doubts?",
+    "subtitle": "Then watch this video and see for yourself"
+  },
+
+  "form": {
+    "titleOne": "Contact ",
+    "titleTwo": "us",
+    "subtitle": "It's fast and convenient",
+    "placeholders": {
+      "name": "Your Name*",
+      "mail": "Mail*",
+      "phone": "Phone*",
+      "comment": "Note"
+    },
+    "formButton": "SEND"
+  },
+
+  "contacts": {
+    "cardOne": {
+      "title": "Schedule",
+      "days": "MON-FRI:"
+    },
+    "cardTwo": {
+      "title": "Address",
+      "city": "Kharkiv",
+      "strit": "Sumskaya St. 1"
+    },
+    "cardThree": {
+      "title": "Contacts"
+    }
+  },
+
+  "footer": {
+    "titleLeft": "Information",
+    "titleRight": "Contacts",
+    "formTitle": "Be the first to know about new arrivals",
+    "formDescription": "Receive SMS surprises from us",
+    "formButton": "Send",
+    "link_1": "Catalog",
+    "link_2": "About Us",
+    "link_3": "Delivery and Payment",
+    "link_4": "Returns"
+  },
+
+  "gallery": {
+    "breadcrumbs": {
+      "home": "Home",
+      "gallery": "Gallery"
+    },
+    "titleOne": "T-",
+    "titleTwo": "shirts",
+    "subtitle": "Any size and shape",
+    "filterSortBy": "Sort by:",
+    "filterQuantity": "Quantity:",
+    "sortBy": {
+      "all": "All",
+      "lessMore": "Cheaper-Expensive",
+      "moreLess": "Expensive-Cheaper",
+      "popular": "Popular",
+      "Mens": "Men's",
+      "Womens": "Women's"
+    },
+    "quantity": {
+      "prefix": "At"
+    }
+  },
+
+  "productPage": {
+    "breadcrumbs": {
+      "home": "Home",
+      "gallery": "Catalog"
+    },
+    "filter": {
+      "color": "Color:",
+      "size": "Size:",
+      "quantity": "Quantity:"
+    },
+    "currency": "UAH",
+    "category": "T-shirts",
+    "buttonBy": "BUY",
+    "subtitle": "Description",
+    "commentsTitle": "Reviews",
+    "commentsButton": "Leave a review",
+    "recomTitle": "Recommended for you:",
+
+    "commentsForm": {
+      "title": "Write what you think about us",
+      "rating": "Rate the product*",
+      "name": "Enter your name*",
+      "mail": "Enter your email*",
+      "comment": "Enter your comment*",
+      "buttonAdd": "Add",
+      "buttonOut": "Out"
+    }
+  },
+
+  "cart": {
+    "breadcrumbs": {
+      "home": "Home",
+      "gallery": "Catalog",
+      "cart": "Cart"
+    },
+    "title": "Cart with items:",
+    "empty": "Your cart is empty.",
+    "transfer": "Go to shopping...",
+
+    "orderForm": {
+      "message": "THANK YOU FOR BUYING!",
+      "title": "Place an Order",
+      "name": "Your Name*",
+      "mail": "Email*",
+      "tel": "Phone*",
+      "city": "City*",
+      "warehouse": "Nova Poshta Branch*",
+      "deliveryTitle": "Delivery",
+      "method_1": "Self-pickup",
+      "method_2": "Nova Poshta",
+      "payTitle": "Payment",
+      "payMethod_1": "Cash",
+      "payMethod_2": "Non-cash",
+      "orderSum": "Order",
+      "deliverySum": "Delivery",
+      "totalSum": "Total",
+      "buttonOrder": "Place Order"
+    }
+  },
+
+  "loginPage": {
+    "title": "Login",
+    "linkTransfer": "I don't have an account yet",
+    "mail": "Email",
+    "password": "Enter password",
+    "remember": "Remember me",
+    "exit": "Login",
+    "forgot": "Forgot password?"
+  },
+
+  "registrPage": {
+    "title": "Registration",
+    "linkTransfer": "I already have an account",
+    "tel": "Phone",
+    "RepeatPassword": "Repeat password",
+    "agree": "I accept the terms of use",
+    "button": "Register"
+  },
+
+  "historyPage": {
+    "breadcrumbs": {
+      "home": "Home",
+      "gallery": "Catalog",
+      "profile": "Profile"
+    },
+    "title": "Profile",
+    "out": "Logout",
+    "history": "History",
+    "favorite": "Favorites",
+    "quantity": "Quantity: ",
+    "emptyHistory": "You have no purchase history.",
+    "emptyFavorite": "You have no favorite items.",
+    "transferLink": "Go to shopping..."
+  }
+}

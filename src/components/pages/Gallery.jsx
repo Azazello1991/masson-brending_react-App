@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 // components
 import FilterGallery from "../galleryComponents/FilterGallery";
 import Card from "../galleryComponents/Card";
@@ -14,6 +15,7 @@ import PaginationReactGallery from "../galleryComponents/PaginationReactGallery"
 import BreadCrumbsGallery from "../galleryComponents/BreadCrumbsGallery";
 
 const Gallery = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { sortBy, quantity, currentPage, categoryId, searchValue } =
     useSelector((state) => state.filterSlice.params);
@@ -84,16 +86,16 @@ const Gallery = () => {
   return (
     <>
       <Header />
-      <main class="main catalog-page__main">
+      <main className="main catalog-page__main">
         <BreadCrumbsGallery />
-        <section class="section catalog-page">
-          <div class="container">
-            <div class="catalog-page__head">
-              <div class="catalog-page__title-inner">
-                <h2 class="catalog-page__title">
-                  <span class="section-title-slice">Фут</span>болки
+        <section className="section catalog-page">
+          <div className="container">
+            <div className="catalog-page__head">
+              <div className="catalog-page__title-inner">
+                <h2 className="catalog-page__title">
+                  <span className="section-title-slice">{t('gallery.titleOne')}</span>{t('gallery.titleTwo')}
                 </h2>
-                <p class="catalog-page__text">Будь-які розміри та форми</p>
+                <p className="catalog-page__text">{t('gallery.subtitle')}</p>
               </div>
 
               <FilterGallery />
@@ -101,9 +103,9 @@ const Gallery = () => {
             {isLoading === "error" ? (
               <NotFoundBlock />
             ) : isLoading === "loading" ? (
-              <ul class="catalog-page__catalog catalog-list">{skeletons}</ul>
+              <ul className="catalog-page__catalog catalog-list">{skeletons}</ul>
             ) : (
-              <ul class="catalog-page__catalog catalog-list">{arrProducts}</ul>
+              <ul className="catalog-page__catalog catalog-list">{arrProducts}</ul>
             )}
 
             {/* <PaginationGallery /> */}

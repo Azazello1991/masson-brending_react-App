@@ -4,9 +4,11 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { newComment } from "../../redux/slices/commentsProductSlice";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 const CommentForm = ({ setOpenFormComment, openFormComment }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [rating, setRating] = React.useState(0);
   const [name, setName] = React.useState("");
@@ -60,12 +62,16 @@ const CommentForm = ({ setOpenFormComment, openFormComment }) => {
   };
 
   return (
-    <form class="product__form hidden" action="#" method="post">
-      <div class="product__form-wrapper">
-        <h2 class="product__form-subtitle">Напишіть що Ви думаєте про нас</h2>
+    <form className="product__form hidden" action="#" method="post">
+      <div className="product__form-wrapper">
+        <h2 className="product__form-subtitle">
+          {t("productPage.commentsForm.title")}
+        </h2>
 
-        <div class="product__stars-wrapper">
-          <span class="product__rating-title">Оцініть продукцію*</span>
+        <div className="product__stars-wrapper">
+          <span className="product__rating-title">
+            {t("productPage.commentsForm.rating")}
+          </span>
 
           <StarRatings
             rating={rating}
@@ -79,68 +85,68 @@ const CommentForm = ({ setOpenFormComment, openFormComment }) => {
           />
         </div>
 
-        <div class="product__inner">
-          <label class="sr-only" for="comName">
-            Введіть ім'я
+        <div className="product__inner">
+          <label className="sr-only" for="comName">
+            {t("productPage.commentsForm.name")}
           </label>
           <input
             onChange={(event) => inputName(event)}
             value={name}
-            class="fild product__fild"
+            className="fild product__fild"
             type="text"
             name="comName"
             id="comName"
-            placeholder="Введіть ім'я*"
+            placeholder={t("productPage.commentsForm.name")}
             required
           />
         </div>
 
-        <div class="product__inner">
-          <label class="sr-only" for="comEmail">
-            Введіть email
+        <div className="product__inner">
+          <label className="sr-only" for="comEmail">
+            {t("productPage.commentsForm.mail")}
           </label>
           <input
             value={mail}
             onChange={(event) => inputMmail(event)}
-            class="fild product__fild"
+            className="fild product__fild"
             type="email"
             name="comEmail"
             id="comEmail"
-            placeholder="Введіть Email*"
+            placeholder={t("productPage.commentsForm.mail")}
             required
           />
         </div>
 
-        <div class="product__inner">
-          <label class="sr-only" for="comment1">
-            Введіть коментар
+        <div className="product__inner">
+          <label className="sr-only" for="comment1">
+            {t("productPage.commentsForm.comment")}
           </label>
           <textarea
             value={comment}
             onChange={(event) => inputComment(event)}
-            class="fild product__fild product__textarea"
+            className="fild product__fild product__textarea"
             name="comment"
             id="comment1"
             cols="30"
             rows="5"
-            placeholder="Введіть коментар"
+            placeholder={t("productPage.commentsForm.comment")}
           ></textarea>
         </div>
 
-        <div class="product__btns">
+        <div className="product__btns">
           <button
-            class="btn product__btn-form product__form-btn--add"
+            className="btn product__btn-form product__form-btn--add"
             type="submit"
             onClick={() => addComment()}
           >
-            Додати
+            {t("productPage.commentsForm.buttonAdd")}
           </button>
           <button
             onClick={() => setOpenFormComment(false)}
-            class="btn product__btn-form product__form-btn--cansel"
+            className="btn product__btn-form product__form-btn--cansel"
             type="button"
           >
-            Вийти
+            {t("productPage.commentsForm.buttonOut")}
           </button>
         </div>
       </div>
