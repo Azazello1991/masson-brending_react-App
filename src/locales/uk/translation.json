@@ -288,6 +288,8 @@
     "out": "Вийти",
     "history": "Історія",
     "favorite": "Обране",
+    "folovHistory": "До історії покупок",
+    "folovFavorite": "До обраних товарив",
     "quantity": "Кількість: ",
     "emptyHistory": "У Вас не було покупок.",
     "emptyFavorite": "У Вас немає обраних товарів.",

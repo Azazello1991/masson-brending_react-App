@@ -293,6 +293,8 @@
     "out": "Logout",
     "history": "History",
     "favorite": "Favorites",
+    "folovHistory": "To purchase history",
+    "folovFavorite": "To selected products",
     "quantity": "Quantity: ",
     "emptyHistory": "You have no purchase history.",
     "emptyFavorite": "You have no favorite items.",

@@ -45,6 +45,24 @@ const ForYou = () => {
           }}
           pagination={{ clickable: true }}
           navigation={false} // Включаем навигацию для использования рефов
+          breakpoints={{
+        // при ширині >= 992px
+        992: {
+          slidesPerView: 4, 
+        },
+        // при ширині від 768 і до 992px
+        768: {
+          slidesPerView: 3, 
+        },
+
+        576: {
+          slidesPerView: 2,
+            },
+        
+        0: {
+          slidesPerView: 1, 
+        },
+      }}
         >
           {catalogItems &&
             catalogItems.map((card, i) => (

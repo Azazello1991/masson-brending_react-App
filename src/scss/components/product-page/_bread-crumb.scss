@@ -1,35 +1,39 @@
 .bread-crumbs {
-   margin-bottom: 35px;
-   
-      &__flexbox {
-         display: flex;
-         justify-content: center;
-         column-gap: 10px;
+  margin-bottom: 35px;
+
+  &__flexbox {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+  }
+
+  &__item {
+    color: #a4a4a4;
+    @extend %montserrat-300;
+    font-size: 16px;
+
+    &:last-child {
+      color: $accent;
+
+      @include r(576) {
+        display: none;
       }
+    }
+  }
 
-      &__item {
-         color: #A4A4A4;
-         @extend %montserrat-300;
-         font-size: 16px;
+  &__item:not(:last-child) {
+    position: relative;
+    padding: 0 10px 0 0;
 
-         &:last-child {
-            color: $accent;
-         }
-      }
+    &::after {
+      content: "/";
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
 
-		&__item:not(:last-child) {
-         position: relative;
-         padding: 0 10px 0 0;
-
-         &::after {
-            content: '/';
-            position: absolute;
-            top: 0;
-            right: 0;
-         }
-
-         &:hover {
-            text-decoration-line: underline;
-         }
-		}
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
 }

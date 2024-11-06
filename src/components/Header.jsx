@@ -1,17 +1,39 @@
 import { Link, NavLink } from "react-router-dom";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Logo from "../images/logo-masons-shop.svg";
 import Categorys from "./headerComponents/Categorys";
 import Cabinet from "./headerComponents/Cabinet";
 import SearchHead from "./headerComponents/SearchHead";
+import MobileMenu from "./pages/MobileMenu";
 
 const Header = () => {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 992);
   const [isSticky, setIsSticky] = useState(false);
+  const [activeBurger, setActiveBurger] = useState(false);
+  const [show, setShow] = useState(false);
+  const [margin, setMargin] = useState("-80px");
+  const headerRef = useRef(null);
 
+  // Поява меню-бургер в залежності від шерени екрану
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 992);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Липка шапка при скролі
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
         setIsSticky(true);
+
+        /* if (window.innerWidth < 992) {
+          setShow(false);
+        } */
+
       } else {
         setIsSticky(false);
       }
@@ -24,8 +46,27 @@ const Header = () => {
     };
   }, []);
 
+  // Обработчик клика вне шапки
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        headerRef.current &&
+        !headerRef.current.contains(event.target)
+      ) {
+        setShow(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <header className={isSticky ? "header sticky" : "header"}>
+    <header
+      ref={headerRef}
+      className={`${isSticky ? "header sticky" : "header"} ${
+        show ? "show" : ""
+      }`}
+    >
       <div className="container">
         <div className="header__top">
           <SearchHead />
@@ -40,15 +81,29 @@ const Header = () => {
             ></img>
           </Link>
 
-          <Cabinet />
-
-          {/*  <button className="burger burger-index--open" type="button">
+          {isLargeScreen ? (
+            <Cabinet />
+          ) : (
+            <button
+              className="burger"
+              onClick={() => setActiveBurger(!activeBurger)}
+              type="button"
+            >
               <span className="burger__line"></span>
               <span className="sr-only tr">Відкрити меню</span>
-            </button> */}
+            </button>
+          )}
         </div>
 
-        <Categorys />
+        <Categorys
+          setIsSticky={setIsSticky}
+          setShow={setShow}
+        />
+
+        <MobileMenu
+          activeBurger={activeBurger}
+          setActiveBurger={setActiveBurger}
+        />
       </div>
     </header>
   );

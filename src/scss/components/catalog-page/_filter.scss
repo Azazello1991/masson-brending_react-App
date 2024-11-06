@@ -1,10 +1,9 @@
 .filter {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  /* column-gap: 15px; */
+  column-gap: 15px;
   max-width: 550px;
-  min-width: 325px;
+/*   min-width: 325px; */
   margin-bottom: 50px;
 
   &__inner {

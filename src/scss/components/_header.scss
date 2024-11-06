@@ -13,10 +13,13 @@
   &.sticky {
     background-color: $bgColor;
     padding: 10px 30px;
-  }
+    margin-top: -75px;
 
-  &.sticky {
-    margin-top: -80px;
+    &.show {
+      background-color: $bgColor;
+      padding: 10px 30px;
+      margin-top: 0;
+    }
 
     &:hover {
       margin-top: 0;
@@ -61,20 +64,12 @@
     display: flex;
     align-items: center;
     column-gap: 30px;
-
-    @include r(576) {
-      display: none;
-    }
   }
 
   &__languages {
     display: flex;
     align-items: center;
     column-gap: 11px;
-
-    @include r(768) {
-      display: none;
-    }
   }
 
   &__log-in {
@@ -90,10 +85,6 @@
 
     &:hover {
       box-shadow: 0 0 5px #ffc700;
-    }
-
-    @include r(768) {
-      display: none;
     }
   }
 
@@ -204,7 +195,6 @@
 }
 
 .nav {
-
   &__list {
     display: grid;
     grid-template-columns: repeat(7, 1fr);

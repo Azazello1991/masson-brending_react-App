@@ -12,10 +12,8 @@
       grid-template-columns: repeat(2, minmax(auto, 320px));
     }
 
-    @include r(768) {
-      display: flex;
-      justify-content: initial;
-      gap: initial;
+    @include r(576) {
+      grid-template-columns: repeat(1, minmax(auto, 320px));
     }
   }
 }

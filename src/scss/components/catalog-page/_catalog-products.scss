@@ -1,6 +1,10 @@
 .catalog-page {
   &__main {
     padding-top: 200px;
+
+    @include r(768) {
+      padding-top: 100px;
+    }
   }
 
   &__head {
@@ -14,7 +18,7 @@
     @include r(768) {
       flex-direction: column;
       align-items: center;
-      padding-top: 100px;
+      padding-top: 50px;
       margin-bottom: 80px;
     }
   }

@@ -243,7 +243,8 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-image: url("../images/icon/icon-delete.svg");
-    filter: invert(51%) sepia(87%) saturate(2382%) hue-rotate(332deg) brightness(101%) contrast(101%);
+    filter: invert(51%) sepia(87%) saturate(2382%) hue-rotate(332deg)
+      brightness(101%) contrast(101%);
     transition: all 0.3s ease-out;
   }
 

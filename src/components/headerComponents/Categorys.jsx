@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { addId } from "../../redux/slices/navSlice";
 
-const Categorys = () => {
+const Categorys = ({ setIsSticky, setShow }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { activId, categorys } = useSelector((state) => state.navSlice);
   const navigate = useNavigate();
+  const [startY, setStartY] = useState(0);
 
+  // Обработчик начала свайпа
+  const handleTouchStart = (e) => {
+    setStartY(e.touches[0].clientY);
+  };
+
+  // Обработчик движения пальца (опускание шапки)
+  const handleTouchMove = (e) => {
+    const touchY = e.touches[0].clientY;
+    const diff = touchY - startY;
+
+    if (diff > 20) {
+      setIsSticky(false);
+      setShow(true)
+      if (window.innerWidth < 992) {
+      }
+    }
+  };
+
+  // Перехід між якорями та сторінками
   const handleLinkClick = (section) => {
     // Переход на главную страницу
     navigate("/"); // Переход на главную страницу
@@ -25,7 +45,11 @@ const Categorys = () => {
   };
 
   return (
-    <nav className="nav">
+    <nav
+      className="nav"
+      onTouchStart={(e) => handleTouchStart(e)}
+      onTouchMove={(e) => handleTouchMove(e)}
+    >
       <ul className="nav__list">
         {categorys.map((category, i) => {
           return (

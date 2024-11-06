@@ -54,18 +54,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    column-gap: 30px;
+    column-gap: 10px;
     padding-bottom: 20px;
     border-bottom: 1px $accent solid;
     margin-bottom: 30px;
 
     @include r(992) {
-      column-gap: 20px;
-    }
-
-    @include r(768) {
-      justify-content: space-between;
-      align-items: start;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     @include r(576) {
@@ -90,12 +87,20 @@
 
     @include r(992) {
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
   }
 
   &__photo {
-    width: 157px;
+    min-width: 157px;
     height: 163px;
+
+    @include r(992) {
+      width: 300px;
+      height: 300px;
+      margin-bottom: 10px;
+    }
   }
 
   &__img {
@@ -118,6 +123,10 @@
   &__subtitle {
     @extend %montserrat-400;
     font-size: 22px;
+
+    @include r(992) {
+      text-align: center;
+    }
   }
 
   &__group {
@@ -131,15 +140,8 @@
       margin-bottom: 0;
       max-width: 350px;
 
-      @include r(768) {
-        bottom: 100px;
-        right: 0;
-        position: absolute;
-      }
-
-      @include r(576) {
-        position: relative;
-        bottom: 0;
+      @include r(992) {
+        margin-bottom: 20px;
       }
     }
 
@@ -153,16 +155,14 @@
     align-items: center;
     column-gap: 30px;
 
-    @include r(768) {
-      padding-top: 50px;
-    }
-
     @include r(576) {
       padding-top: 0;
     }
   }
 
   &__price {
+    display: flex;
+
     @extend %montserrat-600;
     color: $accent;
 
@@ -172,7 +172,7 @@
   }
 
   &__delete {
-    @include r(576) {
+    @include r(992) {
       opacity: 1;
       width: 30px;
       height: 30px;

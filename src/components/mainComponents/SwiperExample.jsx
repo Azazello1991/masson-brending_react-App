@@ -35,6 +35,21 @@ export default () => {
         hide: false, // если true, то scrollbar будет скрыт, когда прокрутка не используется
         draggable: true, // возможность перетаскивать ползунок вручную
       }}
+      б
+      breakpoints={{
+        // при ширині >= 992px
+        992: {
+          slidesPerView: 3, // показывать 3 слайда
+        },
+        // при ширині від 576 і до 992px
+        576: {
+          slidesPerView: 2, // показывать 2 слайда
+        },
+
+        0: {
+          slidesPerView: 1, // показывать 1 слайда
+        },
+      }}
     >
       {productsExample.map((products, i) => {
         return (

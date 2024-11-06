@@ -9,6 +9,7 @@ import Form from "./mainComponents/Form";
 import Contacts from "./mainComponents/Contacts";
 import Comments from "./mainComponents/Comments";
 import Catalog from "./mainComponents/Catalog";
+import Up from "./mainComponents/up/Up";
 
 const Main = () => {
   return (
@@ -23,6 +24,7 @@ const Main = () => {
       <Video />
       <Form />
       <Contacts />
+      <Up/>
     </main>
   );
 };

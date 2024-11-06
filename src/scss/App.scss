@@ -5,22 +5,22 @@
 @import "./mixins.scss";
 @import "./components/swiper.scss";
 
-@import './components/header.scss';
-/* @import "./components/mobile-menu.scss";
-@import "./components/burget-menu.scss"; */
-@import "./components/hero.scss";
-@import "./components/about.scss";
-@import "./components/searchHead.scss";
-@import "./components/example.scss";
-@import "./components/footer.scss";
-@import "./components/sale.scss";
-@import "./components/top.scss";
-@import "./components/shuffle-top.scss";
-@import "./components/catalog.scss";
-@import "./components/contacts.scss";
-@import "./components/form.scss";
-@import "./components/comments.scss";
-@import "./components/video.scss";
+@import './components/header';
+@import "./components/burget-menu";
+@import "./components/mobile-menu";
+@import "./components/hero";
+@import "./components/about";
+@import "./components/searchHead";
+@import "./components/example";
+@import "./components/footer";
+@import "./components/sale";
+@import "./components/top";
+@import "./components/shuffle-top";
+@import "./components/catalog";
+@import "./components/contacts";
+@import "./components/form";
+@import "./components/comments";
+@import "./components/video";
 
 /* galerry-page */
 @import "./components/catalog-page/catalog-products";
